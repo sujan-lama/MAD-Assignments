@@ -23,8 +23,8 @@ If the user is not happy with the default vales, they could add the food by typi
 Screenshots:
 
 <p float="left">
-  <img src="/1.png" width="300" />
-  <img src="/2.png" width="300" /> 
-  <img src="/3.png" width="300" />
-  <img src="/4.png" width="300" />
+  <img src="/1.png" width="300" alt="start" />
+  <img src="/2.png" width="300" alt="decide button clicked" /> 
+  <img src="/3.png" width="300" alt="add new food button clicked"/>
+  <img src="/4.png" width="300" alt="decide button clicked"/>
 </p>
