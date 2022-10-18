@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="26sp"
-        tools:text="HamBurger" />
+        android:text="Press Decide" />
 
 
     <EditText
