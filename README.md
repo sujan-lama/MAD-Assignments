@@ -1,4 +1,4 @@
-# MAD-Assignments
+# MDP-Assignments
 Assignments 2
 
 ```
