@@ -5,6 +5,6 @@ Assignments:
 
 Dinner Decider : https://github.com/sujan-lama/MDP-Assignments/tree/dinner-decider
 
-LessWorking with tab layout: https://github.com/sujan-lama/MDP-Assignments/tree/working-with-tab-layout
+Working with tab layout: https://github.com/sujan-lama/MDP-Assignments/tree/working-with-tab-layout
 
 Walmart login page: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-login-page
