@@ -14,9 +14,12 @@
         android:theme="@style/Theme.MDPAssignments"
         tools:targetApi="31">
         <activity
+            android:name=".shopping.ShoppingCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name="com.miu.mdp.MainActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
