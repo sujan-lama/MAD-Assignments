@@ -8,3 +8,5 @@ Dinner Decider : https://github.com/sujan-lama/MDP-Assignments/tree/dinner-decid
 Working with tab layout: https://github.com/sujan-lama/MDP-Assignments/tree/working-with-tab-layout
 
 Walmart login page: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-login-page
+
+Walmart shopping, register activity and forgot password flow: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-shopping-register
