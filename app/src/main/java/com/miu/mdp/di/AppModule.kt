@@ -4,8 +4,8 @@ import android.app.Application
 import android.content.Context
 import com.miu.mdp.constants.SHARED
 import com.miu.mdp.data.SharedPreferenceHelper
-import com.miu.mdp.repository.login.LoginRepository
-import com.miu.mdp.repository.login.LoginRepositoryImpl
+import com.miu.mdp.repository.user.UserRepository
+import com.miu.mdp.repository.user.UserRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +26,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesLoginRepository(sharedPreferenceHelper: SharedPreferenceHelper): LoginRepository {
-        return LoginRepositoryImpl(sharedPreferenceHelper)
+    fun providesUserRepository(sharedPreferenceHelper: SharedPreferenceHelper): UserRepository {
+        return UserRepositoryImpl(sharedPreferenceHelper)
     }
 }

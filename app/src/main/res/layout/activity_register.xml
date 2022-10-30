@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="#f1eff2"
         android:padding="16dp"
-        tools:context=".ui.login.LoginActivity">
+        tools:context=".ui.register.RegisterActivity">
 
         <TextView
             android:id="@+id/title"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
             android:gravity="center_horizontal"
-            android:text="Hello Again!"
+            android:text="Join us!!!"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:gravity="center_horizontal"
-            android:text="Welcome back you've been missed!"
+            android:text="Build your perfect CV and get your dream job!"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -61,16 +61,62 @@
                 android:padding="24dp">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/emailTextInputLayout"
+                    android:id="@+id/firstNameInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="Email address"
+                    android:hint="First name"
                     android:textSize="14sp"
                     app:helperTextTextColor="@android:color/holo_red_dark"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/firstNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="name"
+                        android:background="@drawable/edittext_background"
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/lastNameInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Last name"
+                    android:textSize="14sp"
+                    app:helperTextTextColor="@android:color/holo_red_dark"
+                    app:layout_constraintEnd_toEndOf="@id/firstNameInputLayout"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@+id/firstNameInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/lastNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="name"
+                        android:background="@drawable/edittext_background"
+                        android:inputType="textEmailAddress"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emailTextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:hint="Email address"
+                    android:textSize="14sp"
+                    app:helperTextTextColor="@android:color/holo_red_dark"
+                    app:layout_constraintEnd_toEndOf="@id/firstNameInputLayout"
+                    app:layout_constraintHorizontal_bias="0"
+                    app:layout_constraintStart_toStartOf="@+id/firstNameInputLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/lastNameInputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/emailEditText"
@@ -108,34 +154,17 @@
                         android:textSize="16sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/forgotPasswordTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:autoLink="all"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:text="Forgot password?"
-                    android:textColor="#217dda"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@+id/passwordTextInputLayout"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/passwordTextInputLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout" />
-
-
                 <Button
-                    android:id="@+id/signInButton"
+                    android:id="@+id/createAccountButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="48dp"
-                    android:text="Sign in"
+                    android:text="Create account"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout" />
 
                 <ProgressBar
                     android:id="@+id/progressBar"
@@ -145,7 +174,7 @@
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/passwordTextInputLayout" />
 
                 <View
                     android:id="@+id/border1"
@@ -165,13 +194,13 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
-                    android:text="Don't have an account?"
+                    android:text="Have an account? Log in"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/border2"
                     app:layout_constraintStart_toEndOf="@+id/border1"
-                    app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+                    app:layout_constraintTop_toBottomOf="@+id/createAccountButton" />
 
                 <View
                     android:id="@+id/border2"
@@ -184,12 +213,12 @@
                     app:layout_constraintTop_toTopOf="@+id/title_no_account" />
 
                 <Button
-                    android:id="@+id/createAccountButton"
+                    android:id="@+id/loginButton"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Create a new account"
+                    android:text="Go to Login"
                     android:textAllCaps="false"
                     android:textSize="16sp"
                     android:typeface="serif"

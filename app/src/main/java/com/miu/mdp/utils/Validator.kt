@@ -27,3 +27,14 @@ fun TextInputLayout.validatePassword(): Boolean {
     }
 }
 
+fun TextInputLayout.validateEmpty(): Boolean {
+    val text = editText?.text.toString().trim()
+    return if (text.isEmpty()) {
+        helperText = "This field is required"
+        false
+    } else {
+        helperText = null
+        true
+    }
+}
+
