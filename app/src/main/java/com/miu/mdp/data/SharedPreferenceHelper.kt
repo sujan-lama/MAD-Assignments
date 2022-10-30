@@ -17,5 +17,16 @@ class SharedPreferenceHelper @Inject constructor(private val sharedPreferences: 
         }
         set(value) = editor.putString(USERPREF.user, Gson().toJson(value)).apply()
 
+    var userList: List<User>
+        get() {
+            val userJson = sharedPreferences.getString(USERPREF.userList, "[]")
+            return Gson().fromJson(userJson, Array<User>::class.java).toList()
+        }
+        set(value) = editor.putString(USERPREF.userList, Gson().toJson(value)).apply()
 
+    fun addUser(user: User) {
+        val userList = userList.toMutableList()
+        userList.add(user)
+        this.userList = userList
+    }
 }

@@ -1,9 +1,12 @@
 package com.miu.mdp.ui.login
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -11,6 +14,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.miu.mdp.databinding.ActivityLoginBinding
+import com.miu.mdp.ui.home.HomeActivity
 import com.miu.mdp.ui.login.state.LoginUiState
 import com.miu.mdp.ui.login.viewmodel.LoginViewModel
 import com.miu.mdp.ui.register.RegisterActivity
@@ -60,9 +64,18 @@ class LoginActivity : AppCompatActivity() {
             hideKeyboard()
         }
 
+        val resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val data = result.data
+                    val user = data?.getStringExtra("username")
+                    binding.emailEditText.setText(user)
+                    Toast.makeText(this, "Account Created Successfully", Toast.LENGTH_SHORT).show()
+                }
+            }
+
         binding.createAccountButton.setOnClickListener {
-            val intent = RegisterActivity.newInstance(this)
-            startActivity(intent)
+            resultLauncher.launch(RegisterActivity.newInstance(this))
         }
 
         lifecycleScope.launchWhenStarted {
@@ -71,7 +84,11 @@ class LoginActivity : AppCompatActivity() {
                     is LoginUiState.Success -> {
                         binding.signInButton.visibility = View.VISIBLE
                         binding.progressBar.isVisible = false
-                        Snackbar.make(binding.root, "Login success", Snackbar.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT)
+                            .show()
+                        val intent = HomeActivity.newInstance(this@LoginActivity)
+                        startActivity(intent)
+                        finish()
                     }
                     is LoginUiState.Error -> {
                         binding.signInButton.visibility = View.VISIBLE
@@ -95,5 +112,10 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

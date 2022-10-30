@@ -46,6 +46,10 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        
+        binding.back.setOnClickListener {
+            onBackPressed()
+        }
 
         binding.createAccountButton.setOnClickListener {
 
@@ -78,8 +82,9 @@ class RegisterActivity : AppCompatActivity() {
                             "Register Successfully",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val intent = LoginActivity.newInstance(this@RegisterActivity)
-                        startActivity(intent)
+                        val data = Intent()
+                        data.putExtra("username", binding.emailEditText.text.toString())
+                        setResult(RESULT_OK, data)
                         finish()
                     }
                     is RegisterUiState.Error -> {
@@ -107,5 +112,15 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        setResult(RESULT_CANCELED)
+        super.onBackPressed()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

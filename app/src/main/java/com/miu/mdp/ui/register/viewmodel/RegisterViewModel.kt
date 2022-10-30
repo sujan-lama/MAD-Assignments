@@ -29,7 +29,7 @@ class RegisterViewModel @Inject constructor(
             if (success) {
                 _registerUiState.value = RegisterUiState.Success
             } else {
-                _registerUiState.value = RegisterUiState.Error("Username already exists")
+                _registerUiState.value = RegisterUiState.Error("Email already exists")
             }
         }
 }

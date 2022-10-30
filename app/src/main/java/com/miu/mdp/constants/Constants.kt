@@ -7,4 +7,5 @@ object SHARED{
 
 object USERPREF{
     const val user = "USER"
+    const val userList = "USER_LIST"
 }
