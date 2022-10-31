@@ -2,7 +2,7 @@ package com.miu.mdp.ui.start.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.miu.mdp.repository.user.UserRepository
+import com.miu.mdp.domain.repository.UserRepository
 import com.miu.mdp.ui.start.state.StartUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

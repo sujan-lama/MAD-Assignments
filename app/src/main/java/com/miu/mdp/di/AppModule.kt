@@ -2,10 +2,12 @@ package com.miu.mdp.di
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.miu.mdp.constants.SHARED
 import com.miu.mdp.data.SharedPreferenceHelper
-import com.miu.mdp.repository.user.UserRepository
-import com.miu.mdp.repository.user.UserRepositoryImpl
+import com.miu.mdp.data.local.AppDatabase
+import com.miu.mdp.data.repository.UserRepositoryImpl
+import com.miu.mdp.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,7 +28,20 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesUserRepository(sharedPreferenceHelper: SharedPreferenceHelper): UserRepository {
-        return UserRepositoryImpl(sharedPreferenceHelper)
+    fun provideAppDatabase(app: Application): AppDatabase {
+        return Room.databaseBuilder(
+            app,
+            AppDatabase::class.java,
+            AppDatabase.DATABASE_NAME
+        ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesUserRepository(
+        sharedPreferenceHelper: SharedPreferenceHelper,
+        appDatabase: AppDatabase
+    ): UserRepository {
+        return UserRepositoryImpl(sharedPreferenceHelper, appDatabase)
     }
 }

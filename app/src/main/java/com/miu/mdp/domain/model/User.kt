@@ -1,4 +1,4 @@
-package com.miu.mdp.model
+package com.miu.mdp.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

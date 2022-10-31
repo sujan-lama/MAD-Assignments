@@ -1,6 +1,6 @@
-package com.miu.mdp.repository.user
+package com.miu.mdp.domain.repository
 
-import com.miu.mdp.model.User
+import com.miu.mdp.domain.model.User
 
 interface UserRepository {
     suspend fun login(username: String, password: String): Boolean
