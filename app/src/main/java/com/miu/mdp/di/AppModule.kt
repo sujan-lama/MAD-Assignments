@@ -6,7 +6,9 @@ import androidx.room.Room
 import com.miu.mdp.constants.SHARED
 import com.miu.mdp.data.SharedPreferenceHelper
 import com.miu.mdp.data.local.AppDatabase
+import com.miu.mdp.data.repository.HomeRepositoryImpl
 import com.miu.mdp.data.repository.UserRepositoryImpl
+import com.miu.mdp.domain.repository.HomeRepository
 import com.miu.mdp.domain.repository.UserRepository
 import dagger.Module
 import dagger.Provides
@@ -43,5 +45,14 @@ object AppModule {
         appDatabase: AppDatabase
     ): UserRepository {
         return UserRepositoryImpl(sharedPreferenceHelper, appDatabase)
+    }
+
+    @Provides
+    @Singleton
+    fun providesHomeRepository(
+        sharedPreferenceHelper: SharedPreferenceHelper,
+        appDatabase: AppDatabase
+    ): HomeRepository {
+        return HomeRepositoryImpl(sharedPreferenceHelper, appDatabase.userDetailDao())
     }
 }

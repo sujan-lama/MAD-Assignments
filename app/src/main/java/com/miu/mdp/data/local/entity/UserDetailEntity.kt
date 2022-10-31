@@ -20,7 +20,9 @@ import com.miu.mdp.domain.model.Experience
 data class UserDetailEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    val image: String,
     val email: String,
+    val position: String,
     val contact: Contact,
     val education: List<Education>,
     val certification: List<Certification>,
