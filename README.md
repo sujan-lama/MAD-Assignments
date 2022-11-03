@@ -10,3 +10,7 @@ Working with tab layout: https://github.com/sujan-lama/MDP-Assignments/tree/work
 Walmart login page: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-login-page
 
 Walmart shopping, register activity and forgot password flow: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-shopping-register
+
+Quiz Assignment : https://github.com/sujan-lama/MDP-Assignments/tree/quiz-input-controls
+
+Walmart Electronics page recyclerview: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-electronics-page
