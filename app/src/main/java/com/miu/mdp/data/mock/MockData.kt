@@ -55,7 +55,7 @@ fun getFakeUserDetail(username: String) = UserDetailEntity(
             startDate = "2020",
             endDate = "present",
             description = "Developing android apps",
-            image = ""
+            image = "https://www.w3schools.com/howto/img_avatar.png"
         ),
         Experience(
             companyName = "Apple",
@@ -63,7 +63,7 @@ fun getFakeUserDetail(username: String) = UserDetailEntity(
             startDate = "2017",
             endDate = "2020",
             description = "Developing iOS apps",
-            image = ""
+            image = "https://www.w3schools.com/howto/img_avatar.png"
         )
     ),
 
