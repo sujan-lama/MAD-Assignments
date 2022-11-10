@@ -19,32 +19,32 @@ fun getFakeUserDetail(username: String) = UserDetailEntity(
     ),
     education = listOf(
         Education(
-            "Master of Science",
-            "Computer Science",
-            "University of Minnesota",
-            "2019",
-            "2021"
+            degree = "Master of Science",
+            schoolName = "University of Minnesota",
+            startDate = "2021",
+            endDate = "2024",
+            image = "https://www.w3schools.com/howto/img_avatar.png"
         ),
         Education(
-            "Bachelor of Science",
-            "Computer Science",
-            "University of Minnesota",
-            "2015",
-            "2019"
+            degree = "Bachelor in Computer Engineering",
+            schoolName = "Tribhuvan University",
+            startDate = "2013",
+            endDate = "2017",
+            image = "https://www.w3schools.com/howto/img_avatar.png"
         )
     ),
     certification = listOf(
         Certification(
             certificationName = "OCA Java SE 8 Programmer I",
-            image = "",
+            image = "https://www.w3schools.com/howto/img_avatar.png",
             certificationAuthority = "Google",
             certificationDate = "2019",
         ),
         Certification(
-            certificationName = "iOS Developer",
-            certificationAuthority = "Apple",
+            certificationName = "AWS Certified Solutions Architect - Associate",
+            certificationAuthority = "Amazon",
             certificationDate = "2019",
-            image = ""
+            image = "https://www.w3schools.com/howto/img_avatar.png",
         )
     ),
     aboutMe = "I am a software developer with 5 years of experience in Android development. I have worked on multiple projects and have experience in developing mobile applications from scratch. I am a quick learner and have a passion for learning new technologies. I am looking for a challenging position where I can utilize my skills and knowledge to the fullest.",

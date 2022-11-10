@@ -5,8 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.miu.mdp.databinding.FragmentAboutBinding
+import com.miu.mdp.ui.home.adapter.CertificationAdapter
+import com.miu.mdp.ui.home.adapter.EducationAdapter
+import com.miu.mdp.ui.home.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutFragment : Fragment() {
 
     companion object {
@@ -19,6 +26,11 @@ class AboutFragment : Fragment() {
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: HomeViewModel by viewModels()
+
+    private val educationAdapter = EducationAdapter()
+    private val certificationAdapter = CertificationAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +42,16 @@ class AboutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.educationRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.certificationRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.educationRecyclerView.adapter = educationAdapter
+        binding.certificationRecyclerView.adapter = certificationAdapter
+        viewModel.userDetail.observe(viewLifecycleOwner) {
+            if (it == null) return@observe
+            binding.aboutMe.text = it.aboutMe
+            educationAdapter.submitList(it.education)
+            certificationAdapter.submitList(it.certification)
+        }
     }
 
     override fun onDestroyView() {
