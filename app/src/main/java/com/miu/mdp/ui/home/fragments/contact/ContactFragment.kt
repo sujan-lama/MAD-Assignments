@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.miu.mdp.databinding.FragmentAboutBinding
+import androidx.fragment.app.viewModels
 import com.miu.mdp.databinding.FragmentContactBinding
-import com.miu.mdp.databinding.FragmentHomeBinding
+import com.miu.mdp.ui.home.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContactFragment : Fragment() {
 
-    companion object{
+    companion object {
         const val TAG = "ContactFragment"
         fun newInstance(): ContactFragment {
             return ContactFragment()
@@ -20,6 +22,8 @@ class ContactFragment : Fragment() {
 
     private var _binding: FragmentContactBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +36,10 @@ class ContactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.userDetail.observe(viewLifecycleOwner) {
+            if (it == null) return@observe
+            binding.contact = it.contact
+        }
     }
 
     override fun onDestroyView() {

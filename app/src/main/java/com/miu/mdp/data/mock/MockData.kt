@@ -13,9 +13,10 @@ fun getFakeUserDetail(username: String) = UserDetailEntity(
     position = "Software Engineer",
     contact = Contact(
         "641-233-2121",
+        "sujan@gmail.com",
         "sujan-lama",
         "sujan-lama",
-        ""
+        "Sujan Lama"
     ),
     education = listOf(
         Education(
