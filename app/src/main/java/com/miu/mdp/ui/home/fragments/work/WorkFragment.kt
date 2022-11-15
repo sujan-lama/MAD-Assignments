@@ -55,6 +55,9 @@ class WorkFragment : Fragment() {
             )
         )
         binding.workExperienceRecyclerView.adapter = workAdapter
+        binding.fabAddWork.setOnClickListener {
+            AddWorkDialog.newInstance().show(childFragmentManager, AddWorkDialog.TAG)
+        }
         viewModel.userDetail.observe(viewLifecycleOwner) {
             if (it == null) return@observe
             workAdapter.submitList(it.experience)
