@@ -30,17 +30,16 @@ class StartActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             viewModel.startUiState.collect { uiState ->
                 when (uiState) {
-                    StartUiState.LoggedIn -> {
+                    is StartUiState.LoggedIn -> {
                         val intent = HomeActivity.newInstance(this@StartActivity)
+                        intent.putExtra("email", uiState.email)
                         startActivity(intent)
                         finish()
                     }
-                    StartUiState.LoggedOut -> {
-                        val intent = LoginActivity.newInstance(this@StartActivity)
-                        startActivity(intent)
+                    is StartUiState.LoggedOut -> {
+                        startActivity(LoginActivity.newInstance(this@StartActivity))
                         finish()
                     }
-
                     else -> Unit
                 }
             }

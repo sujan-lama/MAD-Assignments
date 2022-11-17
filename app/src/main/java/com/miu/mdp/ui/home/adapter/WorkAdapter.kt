@@ -9,7 +9,8 @@ import com.miu.mdp.databinding.ItemWorkExperienceBinding
 import com.miu.mdp.domain.model.Experience
 import com.miu.mdp.utils.setImageUrl
 
-class WorkAdapter : ListAdapter<Experience, WorkAdapter.ViewHolder>(DiffCallback()) {
+class WorkAdapter(private val listener: OnItemClickListener) :
+    ListAdapter<Experience, WorkAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -38,14 +39,27 @@ class WorkAdapter : ListAdapter<Experience, WorkAdapter.ViewHolder>(DiffCallback
                 description.text = item.description
                 workExperienceImage.setImageUrl(item.image)
             }
+
+
+            binding.root.setOnCreateContextMenuListener { contextMenu, _, _ ->
+                contextMenu.add(adapterPosition, 0, 0, "Delete").setOnMenuItemClickListener {
+                    listener.onDeleteClick(item)
+                    true
+                }
+            }
         }
     }
 
     class DiffCallback : DiffUtil.ItemCallback<Experience>() {
         override fun areItemsTheSame(oldItem: Experience, newItem: Experience) =
-            oldItem.companyName == newItem.companyName
+            oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: Experience, newItem: Experience) =
             oldItem == newItem
+    }
+
+    interface OnItemClickListener {
+        fun onDeleteClick(experience: Experience)
+
     }
 }

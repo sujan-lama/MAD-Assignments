@@ -8,7 +8,8 @@ import com.miu.mdp.ui.home.fragments.contact.ContactFragment
 import com.miu.mdp.ui.home.fragments.home.HomeFragment
 import com.miu.mdp.ui.home.fragments.work.WorkFragment
 
-class HomeAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class HomeAdapter(fragmentActivity: FragmentActivity, val email: String) :
+    FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
         return 4
@@ -17,8 +18,8 @@ class HomeAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fra
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> HomeFragment.newInstance()
-            1 -> AboutFragment.newInstance()
-            2 -> WorkFragment.newInstance()
+            1 -> AboutFragment.newInstance(email)
+            2 -> WorkFragment.newInstance(email)
             3 -> ContactFragment.newInstance()
             else -> HomeFragment.newInstance()
         }

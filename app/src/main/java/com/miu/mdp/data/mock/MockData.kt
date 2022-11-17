@@ -1,15 +1,10 @@
 package com.miu.mdp.data.mock
 
-import com.miu.mdp.data.local.entity.UserDetailEntity
-import com.miu.mdp.domain.model.Certification
-import com.miu.mdp.domain.model.Contact
-import com.miu.mdp.domain.model.Education
-import com.miu.mdp.domain.model.Experience
+import com.miu.mdp.domain.model.*
 
-fun getFakeUserDetail(username: String) = UserDetailEntity(
-    id = 0,
+fun getMockUserDetail(email: String) = UserDetail(
     image = "https://www.w3schools.com/howto/img_avatar.png",
-    email = username,
+    email = email,
     position = "Software Engineer",
     contact = Contact(
         "641-233-2121",
@@ -18,56 +13,7 @@ fun getFakeUserDetail(username: String) = UserDetailEntity(
         "sujan-lama",
         "Sujan Lama"
     ),
-    education = listOf(
-        Education(
-            degree = "Master of Science",
-            schoolName = "University of Minnesota",
-            startDate = "2021",
-            endDate = "2024",
-            image = "https://www.w3schools.com/howto/img_avatar.png"
-        ),
-        Education(
-            degree = "Bachelor in Computer Engineering",
-            schoolName = "Tribhuvan University",
-            startDate = "2013",
-            endDate = "2017",
-            image = "https://www.w3schools.com/howto/img_avatar.png"
-        )
-    ),
-    certification = listOf(
-        Certification(
-            certificationName = "OCA Java SE 8 Programmer I",
-            image = "https://www.w3schools.com/howto/img_avatar.png",
-            certificationAuthority = "Google",
-            certificationDate = "2019",
-        ),
-        Certification(
-            certificationName = "AWS Certified Solutions Architect - Associate",
-            certificationAuthority = "Amazon",
-            certificationDate = "2019",
-            image = "https://www.w3schools.com/howto/img_avatar.png",
-        )
-    ),
     aboutMe = "I am a software developer with 5 years of experience in Android development. I have worked on multiple projects and have experience in developing mobile applications from scratch. I am a quick learner and have a passion for learning new technologies. I am looking for a challenging position where I can utilize my skills and knowledge to the fullest.",
-    experience = listOf(
-        Experience(
-            companyName = "Google",
-            position = "Android Developer",
-            startDate = "2020",
-            endDate = "present",
-            description = "Developing android apps",
-            image = "https://www.w3schools.com/howto/img_avatar.png"
-        ),
-        Experience(
-            companyName = "Apple",
-            position = "iOS Developer",
-            startDate = "2017",
-            endDate = "2020",
-            description = "Developing iOS apps",
-            image = "https://www.w3schools.com/howto/img_avatar.png"
-        )
-    ),
-
     careerNote = "Completed on-campus studies and currently taking distance education courses to complete a Master's degree in Computer Science (Available for full-time, W-2 employment).",
     experienceMap = hashMapOf(
         "Languages" to listOf("Java", "Kotlin", "Swift"),
@@ -83,4 +29,63 @@ fun getFakeUserDetail(username: String) = UserDetailEntity(
             "Jira"
         )
     ),
+)
+
+fun getMockExperience(email: String) = listOf(
+    Experience(
+        id = 1,
+        companyName = "Google",
+        position = "Android Developer",
+        startDate = "2020",
+        endDate = "present",
+        description = "Developing android apps",
+        image = "https://www.w3schools.com/howto/img_avatar.png",
+        email = email
+    ),
+    Experience(
+        id = 2,
+        companyName = "Apple",
+        position = "iOS Developer",
+        startDate = "2017",
+        endDate = "2020",
+        description = "Developing iOS apps",
+        image = "https://www.w3schools.com/howto/img_avatar.png",
+        email = email
+    )
+)
+
+fun getMockEducation(email: String) = listOf(
+    Education(
+        schoolName = "University of Iowa",
+        degree = "Master of Science",
+        startDate = "2017",
+        endDate = "2019",
+        image = "https://www.w3schools.com/howto/img_avatar.png",
+        email = email
+    ),
+    Education(
+        schoolName = "University of Iowa",
+        degree = "Bachelor of Science",
+        startDate = "2013",
+        endDate = "2017",
+        image = "https://www.w3schools.com/howto/img_avatar.png",
+        email = email
+    )
+)
+
+fun getMockCertification(email: String) = listOf(
+    Certification(
+        certificationName = "OCA Java SE 8 Programmer I",
+        image = "https://www.w3schools.com/howto/img_avatar.png",
+        certificationAuthority = "Google",
+        certificationDate = "2019",
+        email = email
+    ),
+    Certification(
+        certificationName = "AWS Certified Solutions Architect - Associate",
+        certificationAuthority = "Amazon",
+        certificationDate = "2019",
+        image = "https://www.w3schools.com/howto/img_avatar.png",
+        email = email
+    )
 )

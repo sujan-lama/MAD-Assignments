@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.DialogAddWorkBinding
 import com.miu.mdp.domain.model.Experience
@@ -17,19 +17,30 @@ class AddWorkDialog : DialogFragment() {
 
     companion object {
         const val TAG = "AddWorkDialog"
-        fun newInstance(): AddWorkDialog {
-            return AddWorkDialog()
+        fun newInstance(email: String): AddWorkDialog {
+            val args = Bundle()
+            args.putString("email", email)
+            val fragment = AddWorkDialog()
+            fragment.arguments = args
+            return fragment
         }
     }
 
     private var _binding: DialogAddWorkBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: WorkViewModel by viewModels()
+    private var email: String = ""
+
+    private val viewModel: WorkViewModel by activityViewModels()
     override fun onStart() {
         super.onStart()
         val width = (resources.displayMetrics.widthPixels * 0.85).toInt()
         dialog!!.window?.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        email = arguments?.getString("email") ?: ""
     }
 
     override fun onCreateView(
@@ -45,6 +56,7 @@ class AddWorkDialog : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         viewModel.addWorkState.observe(viewLifecycleOwner) {
             when (it) {
                 is AddWorkState.Success -> {
@@ -52,6 +64,7 @@ class AddWorkDialog : DialogFragment() {
                     binding.addWorkButton.visibility = View.VISIBLE
                     Toast.makeText(requireContext(), "Work experience added", Toast.LENGTH_SHORT)
                         .show()
+                    viewModel.getWorkExperience(email)
                     dismiss()
                 }
                 is AddWorkState.Error -> {
@@ -63,7 +76,7 @@ class AddWorkDialog : DialogFragment() {
                     binding.progressBar.visibility = View.VISIBLE
                     binding.addWorkButton.visibility = View.GONE
                 }
-                is AddWorkState.Empty -> {
+                else -> {
                     binding.progressBar.visibility = View.GONE
                     binding.addWorkButton.visibility = View.VISIBLE
                 }
@@ -88,12 +101,14 @@ class AddWorkDialog : DialogFragment() {
                 return@setOnClickListener
             }
             val experience = Experience(
+                id = 0,
                 companyName = companyName,
                 position = position,
                 startDate = startDate,
                 endDate = endDate,
                 image = companyImageUrl,
-                description = description
+                description = description,
+                email = email
             )
 
             viewModel.addWorkExperience(experience)

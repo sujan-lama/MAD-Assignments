@@ -6,4 +6,5 @@ data class Education(
     val degree: String,
     val startDate: String,
     val endDate: String,
+    val email: String
 )

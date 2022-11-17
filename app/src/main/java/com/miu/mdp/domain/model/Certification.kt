@@ -5,4 +5,5 @@ data class Certification(
     val image: String,
     val certificationAuthority: String,
     val certificationDate: String,
+    val email: String
 )

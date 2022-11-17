@@ -18,8 +18,9 @@ class StartViewModel @Inject constructor(
     val startUiState: StateFlow<StartUiState> = _startUiState
 
     fun checkLogin() = viewModelScope.launch {
-        if (userRepository.isLoggedIn()) {
-            _startUiState.value = StartUiState.LoggedIn
+        val user = userRepository.getUser()
+        if (user != null) {
+            _startUiState.value = StartUiState.LoggedIn(user.username)
         } else {
             _startUiState.value = StartUiState.LoggedOut
         }

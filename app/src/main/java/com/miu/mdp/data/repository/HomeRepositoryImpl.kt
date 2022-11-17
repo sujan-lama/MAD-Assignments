@@ -1,32 +1,31 @@
 package com.miu.mdp.data.repository
 
 import com.miu.mdp.data.SharedPreferenceHelper
-import com.miu.mdp.data.local.dao.UserDetailDAO
-import com.miu.mdp.data.mapper.toUserDetail
-import com.miu.mdp.domain.model.Experience
+import com.miu.mdp.data.local.AppDatabase
+import com.miu.mdp.data.mapper.toUserData
 import com.miu.mdp.domain.model.User
-import com.miu.mdp.domain.model.UserDetail
+import com.miu.mdp.domain.model.UserDataDTO
 import com.miu.mdp.domain.repository.HomeRepository
+import javax.inject.Inject
 
-class HomeRepositoryImpl(
+class HomeRepositoryImpl @Inject constructor(
     private val sharedPreferenceHelper: SharedPreferenceHelper,
-    private val userDetailDAO: UserDetailDAO,
+    private val appDatabase: AppDatabase
+) : HomeRepository {
 
-    ) : HomeRepository {
+    private val userDAO = appDatabase.userWithAllDataDao()
+    private val experienceDAO = appDatabase.experienceDao()
+
     override suspend fun getUser(): User? {
         return sharedPreferenceHelper.user
     }
 
-    override suspend fun getUserDetail(): UserDetail? {
-        val user = sharedPreferenceHelper.user ?: return null
-        return userDetailDAO.getUserDetail(user.username)?.toUserDetail()
-    }
-
-    override suspend fun addWorkExperience(experience: Experience) {
-        val user = sharedPreferenceHelper.user ?: return
-        val userDetail = userDetailDAO.getUserDetail(user.username)?.toUserDetail() ?: return
-        val newExperience = userDetail.experience.toMutableList()
-        newExperience.add(experience)
-        userDetailDAO.updateExperience(experience = newExperience, email = user.username)
+    override suspend fun getUserWithData(): UserDataDTO? {
+        val user = sharedPreferenceHelper.user
+        user?.let {
+            val userWithAllData = userDAO.loadAll(it.username)
+            return userWithAllData.toUserData()
+        }
+        return null
     }
 }

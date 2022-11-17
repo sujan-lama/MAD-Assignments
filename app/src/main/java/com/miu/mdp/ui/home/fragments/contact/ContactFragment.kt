@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.miu.mdp.databinding.FragmentContactBinding
 import com.miu.mdp.ui.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +23,7 @@ class ContactFragment : Fragment() {
     private var _binding: FragmentContactBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +36,9 @@ class ContactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.userDetail.observe(viewLifecycleOwner) {
+        viewModel.userDataDTO.observe(viewLifecycleOwner) {
             if (it == null) return@observe
-            binding.contact = it.contact
+            binding.contact = it.userDetail.contact
         }
     }
 

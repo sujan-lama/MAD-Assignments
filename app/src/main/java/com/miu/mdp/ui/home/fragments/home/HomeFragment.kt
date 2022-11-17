@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.FragmentHomeBinding
 import com.miu.mdp.ui.home.viewmodel.HomeViewModel
@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,17 +43,16 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.user.observe(viewLifecycleOwner) {
+        viewModel.userDataDTO.observe(viewLifecycleOwner) {
             if (it == null) return@observe
-            binding.userName.text = "${it.firstName} ${it.lastName}"
-            binding.email.text = it.username
-        }
-        viewModel.userDetail.observe(viewLifecycleOwner) {
-            if (it == null) return@observe
-            binding.profileImage.setImageUrl(it.image)
-            binding.position.text = it.position
-            binding.careerNote.text = it.careerNote
-            setWorkExperienceLayout(it.experienceMap)
+            val user = it.user
+            binding.userName.text = "${user.firstName} ${user.lastName}"
+            binding.email.text = user.username
+            val userDetail = it.userDetail
+            binding.profileImage.setImageUrl(userDetail.image)
+            binding.position.text = userDetail.position
+            binding.careerNote.text = userDetail.careerNote
+            setWorkExperienceLayout(userDetail.experienceMap)
         }
     }
 

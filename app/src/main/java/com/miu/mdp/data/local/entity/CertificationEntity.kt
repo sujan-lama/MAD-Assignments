@@ -4,13 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.miu.mdp.domain.model.Certification
-import com.miu.mdp.domain.model.Contact
-import com.miu.mdp.domain.model.Education
-import com.miu.mdp.domain.model.Experience
 
 @Entity(
-    tableName = "userDetail",
+    tableName = "certification",
     foreignKeys = [ForeignKey(
         entity = UserEntity::class,
         parentColumns = ["username"],
@@ -18,15 +14,13 @@ import com.miu.mdp.domain.model.Experience
         onDelete = ForeignKey.CASCADE
     )]
 )
-data class UserDetailEntity(
+data class CertificationEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    val certificationName: String,
     val image: String,
+    val certificationAuthority: String,
+    val certificationDate: String,
     @ColumnInfo(index = true)
-    val email: String,
-    val position: String,
-    val contact: Contact,
-    val aboutMe: String,
-    val careerNote: String,
-    val experienceMap: HashMap<String, List<String>>
+    val email: String
 )

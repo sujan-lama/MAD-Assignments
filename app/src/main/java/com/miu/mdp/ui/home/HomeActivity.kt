@@ -36,7 +36,8 @@ class HomeActivity : AppCompatActivity() {
         _binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
-        adapter = HomeAdapter(this)
+        val email = intent.getStringExtra("email") ?: ""
+        adapter = HomeAdapter(this, email)
         binding.pager.adapter = adapter
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->
             tab.text = adapter.getPageTitle(position)

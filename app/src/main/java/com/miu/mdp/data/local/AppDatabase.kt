@@ -4,15 +4,16 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.miu.mdp.data.local.converters.Converters
-import com.miu.mdp.data.local.dao.UserDAO
-import com.miu.mdp.data.local.dao.UserDetailDAO
-import com.miu.mdp.data.local.entity.UserDetailEntity
-import com.miu.mdp.data.local.entity.UserEntity
+import com.miu.mdp.data.local.dao.*
+import com.miu.mdp.data.local.entity.*
 
 @Database(
     entities = [
         UserEntity::class,
-        UserDetailEntity::class
+        UserDetailEntity::class,
+        ExperienceEntity::class,
+        EducationEntity::class,
+        CertificationEntity::class
     ],
     version = 1
 )
@@ -20,6 +21,11 @@ import com.miu.mdp.data.local.entity.UserEntity
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDAO
     abstract fun userDetailDao(): UserDetailDAO
+    abstract fun certificationDao(): CertificationDAO
+    abstract fun educationDao(): EducationDAO
+    abstract fun experienceDao(): ExperienceDAO
+    abstract fun aboutDAO(): AboutDAO
+    abstract fun userWithAllDataDao(): UserWithAllDataDAO
 
     companion object {
         const val DATABASE_NAME = "cv_builder_db"
