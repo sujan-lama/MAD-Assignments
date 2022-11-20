@@ -1,6 +1,6 @@
 package com.miu.mdp.domain.model
 
-data class Education(
+data class EducationDTO(
     val schoolName: String,
     val image: String,
     val degree: String,

@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.mdp.databinding.ItemWorkExperienceBinding
-import com.miu.mdp.domain.model.Experience
+import com.miu.mdp.domain.model.ExperienceDTO
 import com.miu.mdp.utils.setImageUrl
 
 class WorkAdapter(private val listener: OnItemClickListener) :
-    ListAdapter<Experience, WorkAdapter.ViewHolder>(DiffCallback()) {
+    ListAdapter<ExperienceDTO, WorkAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -26,12 +26,12 @@ class WorkAdapter(private val listener: OnItemClickListener) :
         holder.bind(getItem(position))
     }
 
-    fun updateList(list: List<Experience>) = submitList(list)
+    fun updateList(list: List<ExperienceDTO>) = submitList(list)
 
 
     inner class ViewHolder(private val binding: ItemWorkExperienceBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Experience) {
+        fun bind(item: ExperienceDTO) {
             binding.apply {
                 position.text = item.position
                 company.text = item.companyName
@@ -50,16 +50,16 @@ class WorkAdapter(private val listener: OnItemClickListener) :
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Experience>() {
-        override fun areItemsTheSame(oldItem: Experience, newItem: Experience) =
+    class DiffCallback : DiffUtil.ItemCallback<ExperienceDTO>() {
+        override fun areItemsTheSame(oldItem: ExperienceDTO, newItem: ExperienceDTO) =
             oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: Experience, newItem: Experience) =
+        override fun areContentsTheSame(oldItem: ExperienceDTO, newItem: ExperienceDTO) =
             oldItem == newItem
     }
 
     interface OnItemClickListener {
-        fun onDeleteClick(experience: Experience)
+        fun onDeleteClick(experienceDTO: ExperienceDTO)
 
     }
 }

@@ -31,8 +31,7 @@ class StartActivity : AppCompatActivity() {
             viewModel.startUiState.collect { uiState ->
                 when (uiState) {
                     is StartUiState.LoggedIn -> {
-                        val intent = HomeActivity.newInstance(this@StartActivity)
-                        intent.putExtra("email", uiState.email)
+                        val intent = HomeActivity.newInstance(this@StartActivity,uiState.email)
                         startActivity(intent)
                         finish()
                     }

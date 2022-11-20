@@ -2,7 +2,7 @@ package com.miu.mdp.data.mock
 
 import com.miu.mdp.domain.model.*
 
-fun getMockUserDetail(email: String) = UserDetail(
+fun getMockUserDetail(email: String) = UserDetailDTO(
     image = "https://www.w3schools.com/howto/img_avatar.png",
     email = email,
     position = "Software Engineer",
@@ -32,7 +32,7 @@ fun getMockUserDetail(email: String) = UserDetail(
 )
 
 fun getMockExperience(email: String) = listOf(
-    Experience(
+    ExperienceDTO(
         id = 1,
         companyName = "Google",
         position = "Android Developer",
@@ -42,7 +42,7 @@ fun getMockExperience(email: String) = listOf(
         image = "https://www.w3schools.com/howto/img_avatar.png",
         email = email
     ),
-    Experience(
+    ExperienceDTO(
         id = 2,
         companyName = "Apple",
         position = "iOS Developer",
@@ -55,7 +55,7 @@ fun getMockExperience(email: String) = listOf(
 )
 
 fun getMockEducation(email: String) = listOf(
-    Education(
+    EducationDTO(
         schoolName = "University of Iowa",
         degree = "Master of Science",
         startDate = "2017",
@@ -63,7 +63,7 @@ fun getMockEducation(email: String) = listOf(
         image = "https://www.w3schools.com/howto/img_avatar.png",
         email = email
     ),
-    Education(
+    EducationDTO(
         schoolName = "University of Iowa",
         degree = "Bachelor of Science",
         startDate = "2013",
@@ -74,14 +74,14 @@ fun getMockEducation(email: String) = listOf(
 )
 
 fun getMockCertification(email: String) = listOf(
-    Certification(
+    CertificationDTO(
         certificationName = "OCA Java SE 8 Programmer I",
         image = "https://www.w3schools.com/howto/img_avatar.png",
         certificationAuthority = "Google",
         certificationDate = "2019",
         email = email
     ),
-    Certification(
+    CertificationDTO(
         certificationName = "AWS Certified Solutions Architect - Associate",
         certificationAuthority = "Amazon",
         certificationDate = "2019",

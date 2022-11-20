@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.mdp.databinding.ItemEducationBinding
-import com.miu.mdp.domain.model.Education
+import com.miu.mdp.domain.model.EducationDTO
 import com.miu.mdp.utils.setImageUrl
 
-class EducationAdapter : ListAdapter<Education, EducationAdapter.ViewHolder>(DiffCallback()) {
+class EducationAdapter : ListAdapter<EducationDTO, EducationAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemEducationBinding
@@ -25,12 +25,12 @@ class EducationAdapter : ListAdapter<Education, EducationAdapter.ViewHolder>(Dif
         holder.bind(getItem(position))
     }
 
-    fun updateList(list: List<Education>) = submitList(list)
+    fun updateList(list: List<EducationDTO>) = submitList(list)
 
 
     inner class ViewHolder(private val binding: ItemEducationBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Education) {
+        fun bind(item: EducationDTO) {
             binding.apply {
                 schoolName.text = item.schoolName
                 schoolDegree.text = item.degree
@@ -39,11 +39,11 @@ class EducationAdapter : ListAdapter<Education, EducationAdapter.ViewHolder>(Dif
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<Education>() {
-        override fun areItemsTheSame(oldItem: Education, newItem: Education) =
+    class DiffCallback : DiffUtil.ItemCallback<EducationDTO>() {
+        override fun areItemsTheSame(oldItem: EducationDTO, newItem: EducationDTO) =
             oldItem.schoolName == newItem.schoolName
 
-        override fun areContentsTheSame(oldItem: Education, newItem: Education) =
+        override fun areContentsTheSame(oldItem: EducationDTO, newItem: EducationDTO) =
             oldItem == newItem
     }
 }

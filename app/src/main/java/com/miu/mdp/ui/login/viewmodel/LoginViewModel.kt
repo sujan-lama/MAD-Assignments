@@ -22,9 +22,9 @@ class LoginViewModel @Inject constructor(
 
     fun login(username: String, password: String) = viewModelScope.launch(Dispatchers.IO) {
         _loginUiState.value = LoginUiState.Loading
-        val success = userRepository.login(username, password)
-        if (success) {
-            _loginUiState.value = LoginUiState.Success
+        val user = userRepository.login(username, password)
+        if (user != null) {
+            _loginUiState.value = LoginUiState.Success(user)
         } else {
             _loginUiState.value = LoginUiState.Error("Invalid username or password")
         }

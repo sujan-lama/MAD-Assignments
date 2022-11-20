@@ -4,10 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.miu.mdp.domain.model.Certification
 import com.miu.mdp.domain.model.Contact
-import com.miu.mdp.domain.model.Education
-import com.miu.mdp.domain.model.Experience
 
 @Entity(
     tableName = "userDetail",

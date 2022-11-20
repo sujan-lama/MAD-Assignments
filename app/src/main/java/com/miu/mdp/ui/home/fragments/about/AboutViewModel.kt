@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.miu.mdp.domain.model.AboutDTO
-import com.miu.mdp.domain.model.Certification
-import com.miu.mdp.domain.model.Education
+import com.miu.mdp.domain.model.CertificationDTO
+import com.miu.mdp.domain.model.EducationDTO
 import com.miu.mdp.domain.repository.AboutRepository
 import com.miu.mdp.domain.repository.CertificationRepository
 import com.miu.mdp.domain.repository.EducationRepository
@@ -32,15 +32,15 @@ class AboutViewModel @Inject constructor(
         }
     }
 
-    fun addEducation(education: Education) {
+    fun addEducation(educationDTO: EducationDTO) {
         viewModelScope.launch(Dispatchers.IO) {
-            educationRepository.insertEducation(education)
+            educationRepository.insertEducation(educationDTO)
         }
     }
 
-    fun addCertification(certification: Certification) {
+    fun addCertification(certificationDTO: CertificationDTO) {
         viewModelScope.launch(Dispatchers.IO) {
-            certificationRepository.insertCertification(certification)
+            certificationRepository.insertCertification(certificationDTO)
         }
     }
 }

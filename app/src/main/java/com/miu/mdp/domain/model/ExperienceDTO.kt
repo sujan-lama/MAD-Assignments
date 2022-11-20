@@ -1,6 +1,6 @@
 package com.miu.mdp.domain.model
 
-data class Experience(
+data class ExperienceDTO(
     val id: Int,
     val companyName: String,
     val image: String,

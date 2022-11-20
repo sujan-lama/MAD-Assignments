@@ -17,11 +17,11 @@ class HomeAdapter(fragmentActivity: FragmentActivity, val email: String) :
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> HomeFragment.newInstance()
+            0 -> HomeFragment.newInstance(email)
             1 -> AboutFragment.newInstance(email)
             2 -> WorkFragment.newInstance(email)
             3 -> ContactFragment.newInstance(email)
-            else -> HomeFragment.newInstance()
+            else -> HomeFragment.newInstance(email)
         }
     }
 

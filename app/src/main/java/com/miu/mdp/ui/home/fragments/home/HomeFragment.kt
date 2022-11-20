@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.FragmentHomeBinding
-import com.miu.mdp.ui.home.viewmodel.HomeViewModel
 import com.miu.mdp.utils.setImageUrl
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,8 +20,12 @@ class HomeFragment : Fragment() {
 
     companion object {
         const val TAG = "HomeFragment"
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
+        fun newInstance(email: String): HomeFragment {
+            val fragment = HomeFragment()
+            val bundle = Bundle()
+            bundle.putString("email", email)
+            fragment.arguments = bundle
+            return fragment
         }
     }
 
@@ -43,12 +46,14 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.userDataDTO.observe(viewLifecycleOwner) {
+        val email = arguments?.getString("email") ?: ""
+        viewModel.getHomeData(email)
+        viewModel.homeDataLiveData.observe(viewLifecycleOwner) {
             if (it == null) return@observe
-            val user = it.user
+            val user = it.userDTO
             binding.userName.text = "${user.firstName} ${user.lastName}"
             binding.email.text = user.username
-            val userDetail = it.userDetail
+            val userDetail = it.userDetailDTO
             binding.profileImage.setImageUrl(userDetail.image)
             binding.position.text = userDetail.position
             binding.careerNote.text = userDetail.careerNote

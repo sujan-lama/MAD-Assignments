@@ -3,7 +3,7 @@ package com.miu.mdp.data.local.entity
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class UserWithAllData(
+data class HomeData(
     @Embedded val user: UserEntity,
     @Relation(
         parentColumn = "username",

@@ -2,12 +2,8 @@ package com.miu.mdp.data.repository
 
 import com.miu.mdp.data.SharedPreferenceHelper
 import com.miu.mdp.data.local.AppDatabase
-import com.miu.mdp.data.mapper.*
-import com.miu.mdp.data.mock.getMockCertification
-import com.miu.mdp.data.mock.getMockEducation
-import com.miu.mdp.data.mock.getMockExperience
-import com.miu.mdp.data.mock.getMockUserDetail
-import com.miu.mdp.domain.model.User
+import com.miu.mdp.data.mapper.toUserDTO
+import com.miu.mdp.domain.model.UserDTO
 import com.miu.mdp.domain.repository.UserRepository
 import javax.inject.Inject
 
@@ -18,32 +14,22 @@ class UserRepositoryImpl @Inject constructor(
     UserRepository {
 
     private val dao = appDatabase.userDao()
-    private val userDataDao = appDatabase.userWithAllDataDao()
 
-    override suspend fun login(username: String, password: String): Boolean {
-        val user = dao.getUser(username, password) ?: return false
-        sharedPreferenceHelper.user = user.toUser()
-        return true
+    override suspend fun login(username: String, password: String): UserDTO? {
+        val user = dao.getUser(username, password) ?: return null
+        sharedPreferenceHelper.user = user.toUserDTO()
+        return user.toUserDTO()
     }
 
-    override suspend fun register(user: User): Boolean {
-        val existingUser = dao.getUser(user.username, user.password)
-        if (existingUser != null && existingUser.username == user.username) {
+    override suspend fun register(userDTO: UserDTO): Boolean {
+        val existingUser = dao.getUser(userDTO.username, userDTO.password)
+        if (existingUser != null && existingUser.username == userDTO.username) {
             return false
         }
-        dao.insert(user.toUserEntity())
-        userDataDao.insertUserWithAllData(
-            userDetail = getMockUserDetail(user.username).toUserDetailEntity(),
-            experience = getMockExperience(user.username).map { it.toExperienceEntity() }.toList(),
-            education = getMockEducation(user.username).map { it.toEducationEntity() }.toList(),
-            certification = getMockCertification(user.username)
-                .map { it.toCertificationEntity() }
-                .toList(),
-        )
         return true
     }
 
-    override suspend fun getUser(): User? {
+    override suspend fun getUser(): UserDTO? {
         return sharedPreferenceHelper.user
     }
 

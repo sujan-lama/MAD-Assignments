@@ -1,9 +1,9 @@
 package com.miu.mdp.data.mapper
 
 import com.miu.mdp.data.local.entity.CertificationEntity
-import com.miu.mdp.domain.model.Certification
+import com.miu.mdp.domain.model.CertificationDTO
 
-fun CertificationEntity.toCertification() = Certification(
+fun CertificationEntity.toCertificationDTO() = CertificationDTO(
     certificationName = certificationName,
     image = image,
     certificationAuthority = certificationAuthority,
@@ -11,7 +11,7 @@ fun CertificationEntity.toCertification() = Certification(
     email = email
 )
 
-fun Certification.toCertificationEntity() = CertificationEntity(
+fun CertificationDTO.toCertificationEntity() = CertificationEntity(
     id = 0,
     certificationName = certificationName,
     image = image,

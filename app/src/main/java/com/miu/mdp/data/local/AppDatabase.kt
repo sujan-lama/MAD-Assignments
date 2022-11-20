@@ -20,12 +20,12 @@ import com.miu.mdp.data.local.entity.*
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDAO
+    abstract fun homeDao(): HomeDAO
     abstract fun userDetailDao(): UserDetailDAO
     abstract fun certificationDao(): CertificationDAO
     abstract fun educationDao(): EducationDAO
     abstract fun experienceDao(): ExperienceDAO
     abstract fun aboutDAO(): AboutDAO
-    abstract fun userWithAllDataDao(): UserWithAllDataDAO
 
     companion object {
         const val DATABASE_NAME = "cv_builder_db"

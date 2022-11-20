@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.DialogAddWorkBinding
-import com.miu.mdp.domain.model.Experience
+import com.miu.mdp.domain.model.ExperienceDTO
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -100,7 +100,7 @@ class AddWorkDialog : DialogFragment() {
                     .show()
                 return@setOnClickListener
             }
-            val experience = Experience(
+            val experienceDTO = ExperienceDTO(
                 id = 0,
                 companyName = companyName,
                 position = position,
@@ -111,7 +111,7 @@ class AddWorkDialog : DialogFragment() {
                 email = email
             )
 
-            viewModel.addWorkExperience(experience)
+            viewModel.addWorkExperience(experienceDTO)
         }
     }
 

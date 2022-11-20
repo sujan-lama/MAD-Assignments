@@ -1,9 +1,9 @@
 package com.miu.mdp.data.repository
 
 import com.miu.mdp.data.local.AppDatabase
-import com.miu.mdp.data.mapper.toCertification
+import com.miu.mdp.data.mapper.toCertificationDTO
 import com.miu.mdp.data.mapper.toCertificationEntity
-import com.miu.mdp.domain.model.Certification
+import com.miu.mdp.domain.model.CertificationDTO
 import com.miu.mdp.domain.repository.CertificationRepository
 import javax.inject.Inject
 
@@ -13,17 +13,17 @@ class CertificationRepositoryImpl @Inject constructor(
 
     private val certificationDAO = appDatabase.certificationDao()
 
-    override suspend fun getCertification(email: String): List<Certification> {
-        return certificationDAO.getCertification(email)?.map { it.toCertification() }?.toList()
+    override suspend fun getCertification(email: String): List<CertificationDTO> {
+        return certificationDAO.getCertification(email)?.map { it.toCertificationDTO() }?.toList()
             ?: emptyList()
     }
 
-    override suspend fun insertCertification(certification: Certification) {
-        certificationDAO.insert(certification.toCertificationEntity())
+    override suspend fun insertCertification(certificationDTO: CertificationDTO) {
+        certificationDAO.insert(certificationDTO.toCertificationEntity())
     }
 
-    override suspend fun deleteCertification(certification: Certification) {
-        certificationDAO.delete(certification.toCertificationEntity())
+    override suspend fun deleteCertification(certificationDTO: CertificationDTO) {
+        certificationDAO.delete(certificationDTO.toCertificationEntity())
     }
 
 

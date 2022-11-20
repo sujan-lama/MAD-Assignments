@@ -5,6 +5,6 @@ import com.miu.mdp.domain.model.AboutDTO
 
 fun AboutData.toAboutDTO() = AboutDTO(
     aboutMe = userDetail.aboutMe,
-    education = education.map { it.toEducation() }.toList(),
-    certification = certification.map { it.toCertification() }.toList()
+    education = education.map { it.toEducationDTO() }.toList(),
+    certification = certification.map { it.toCertificationDTO() }.toList()
 )

@@ -3,10 +3,10 @@ package com.miu.mdp.data.local.converters
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.miu.mdp.domain.model.Certification
+import com.miu.mdp.domain.model.CertificationDTO
 import com.miu.mdp.domain.model.Contact
-import com.miu.mdp.domain.model.Education
-import com.miu.mdp.domain.model.Experience
+import com.miu.mdp.domain.model.EducationDTO
+import com.miu.mdp.domain.model.ExperienceDTO
 
 object Converters {
     @TypeConverter
@@ -39,43 +39,43 @@ object Converters {
 
     @TypeConverter
     @JvmStatic
-    fun fromCertificationToString(certification: List<Certification>): String {
+    fun fromCertificationToString(certificationDTO: List<CertificationDTO>): String {
         val gson = Gson()
-        return gson.toJson(certification)
+        return gson.toJson(certificationDTO)
     }
 
     @TypeConverter
     @JvmStatic
-    fun toCertificationFromString(value: String): List<Certification> {
-        val listType = object : TypeToken<List<Certification>>() {}.type
+    fun toCertificationFromString(value: String): List<CertificationDTO> {
+        val listType = object : TypeToken<List<CertificationDTO>>() {}.type
         return Gson().fromJson(value, listType)
     }
 
     @TypeConverter
     @JvmStatic
-    fun fromEducationToString(education: List<Education>): String {
+    fun fromEducationToString(educationDTO: List<EducationDTO>): String {
         val gson = Gson()
-        return gson.toJson(education)
+        return gson.toJson(educationDTO)
     }
 
     @TypeConverter
     @JvmStatic
-    fun toEducationFromString(value: String): List<Education> {
-        val listType = object : TypeToken<List<Education>>() {}.type
+    fun toEducationFromString(value: String): List<EducationDTO> {
+        val listType = object : TypeToken<List<EducationDTO>>() {}.type
         return Gson().fromJson(value, listType)
     }
 
     @TypeConverter
     @JvmStatic
-    fun fromExperienceToString(experience: List<Experience>): String {
+    fun fromExperienceToString(experienceDTO: List<ExperienceDTO>): String {
         val gson = Gson()
-        return gson.toJson(experience)
+        return gson.toJson(experienceDTO)
     }
 
     @TypeConverter
     @JvmStatic
-    fun toExperienceFromString(value: String): List<Experience> {
-        val listType = object : TypeToken<List<Experience>>() {}.type
+    fun toExperienceFromString(value: String): List<ExperienceDTO> {
+        val listType = object : TypeToken<List<ExperienceDTO>>() {}.type
         return Gson().fromJson(value, listType)
     }
 

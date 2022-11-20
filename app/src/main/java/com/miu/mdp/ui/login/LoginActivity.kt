@@ -86,7 +86,8 @@ class LoginActivity : AppCompatActivity() {
                         binding.progressBar.isVisible = false
                         Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT)
                             .show()
-                        val intent = HomeActivity.newInstance(this@LoginActivity)
+                        val intent =
+                            HomeActivity.newInstance(this@LoginActivity, it.userDTO.username)
                         startActivity(intent)
                         finish()
                     }

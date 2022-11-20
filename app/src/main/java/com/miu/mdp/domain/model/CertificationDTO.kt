@@ -1,6 +1,6 @@
 package com.miu.mdp.domain.model
 
-data class Certification(
+data class CertificationDTO(
     val certificationName: String,
     val image: String,
     val certificationAuthority: String,

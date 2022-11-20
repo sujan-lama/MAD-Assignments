@@ -1,6 +1,6 @@
 package com.miu.mdp.domain.model
 
-data class UserDetail(
+data class UserDetailDTO(
     val image: String,
     val email: String,
     val contact: Contact,
