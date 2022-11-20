@@ -20,7 +20,7 @@ class HomeAdapter(fragmentActivity: FragmentActivity, val email: String) :
             0 -> HomeFragment.newInstance()
             1 -> AboutFragment.newInstance(email)
             2 -> WorkFragment.newInstance(email)
-            3 -> ContactFragment.newInstance()
+            3 -> ContactFragment.newInstance(email)
             else -> HomeFragment.newInstance()
         }
     }

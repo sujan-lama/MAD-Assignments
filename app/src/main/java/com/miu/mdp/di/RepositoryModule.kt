@@ -35,4 +35,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAboutRepository(aboutRepositoryImpl: AboutRepositoryImpl): AboutRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindContactRepository(contactRepositoryImpl: ContactRepositoryImpl): ContactRepository
 }

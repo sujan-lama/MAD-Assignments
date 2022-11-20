@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.databinding.FragmentContactBinding
-import com.miu.mdp.ui.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -15,15 +14,19 @@ class ContactFragment : Fragment() {
 
     companion object {
         const val TAG = "ContactFragment"
-        fun newInstance(): ContactFragment {
-            return ContactFragment()
+        fun newInstance(email: String): ContactFragment {
+            val fragment = ContactFragment()
+            val args = Bundle()
+            args.putString("email", email)
+            fragment.arguments = args
+            return fragment
         }
     }
 
     private var _binding: FragmentContactBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomeViewModel by activityViewModels()
+    private val viewModel: ContactViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +39,11 @@ class ContactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.userDataDTO.observe(viewLifecycleOwner) {
+        val email = arguments?.getString("email") ?: ""
+        viewModel.getContact(email)
+        viewModel.contactLiveData.observe(viewLifecycleOwner) {
             if (it == null) return@observe
-            binding.contact = it.userDetail.contact
+            binding.contact = it
         }
     }
 
