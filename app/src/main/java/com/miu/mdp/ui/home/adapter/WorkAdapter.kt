@@ -2,9 +2,11 @@ package com.miu.mdp.ui.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.miu.mdp.R
 import com.miu.mdp.databinding.ItemWorkExperienceBinding
 import com.miu.mdp.domain.model.ExperienceDTO
 import com.miu.mdp.utils.setImageUrl
@@ -40,12 +42,23 @@ class WorkAdapter(private val listener: OnItemClickListener) :
                 workExperienceImage.setImageUrl(item.image)
             }
 
-
-            binding.root.setOnCreateContextMenuListener { contextMenu, _, _ ->
-                contextMenu.add(adapterPosition, 0, 0, "Delete").setOnMenuItemClickListener {
-                    listener.onDeleteClick(item)
-                    true
+            val popupMenu = PopupMenu(binding.root.context, binding.menu)
+            popupMenu.menuInflater.inflate(R.menu.menu_work, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.action_edit -> {
+                        listener.onEditClick(item)
+                        true
+                    }
+                    R.id.action_delete -> {
+                        listener.onDeleteClick(item)
+                        true
+                    }
+                    else -> false
                 }
+            }
+            binding.menu.setOnClickListener {
+                popupMenu.show()
             }
         }
     }
@@ -60,6 +73,6 @@ class WorkAdapter(private val listener: OnItemClickListener) :
 
     interface OnItemClickListener {
         fun onDeleteClick(experienceDTO: ExperienceDTO)
-
+        fun onEditClick(experienceDTO: ExperienceDTO)
     }
 }

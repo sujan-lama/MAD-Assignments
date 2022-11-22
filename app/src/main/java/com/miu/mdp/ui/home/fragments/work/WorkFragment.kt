@@ -36,7 +36,7 @@ class WorkFragment : Fragment(), WorkAdapter.OnItemClickListener {
     private val workViewModel: WorkViewModel by activityViewModels()
 
     private val workAdapter = WorkAdapter(this)
-
+    private var email = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -48,7 +48,7 @@ class WorkFragment : Fragment(), WorkAdapter.OnItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val email = arguments?.getString("email") ?: ""
+        email = arguments?.getString("email") ?: ""
         workViewModel.getWorkExperience(email)
         binding.workExperienceRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         //divider
@@ -80,5 +80,10 @@ class WorkFragment : Fragment(), WorkAdapter.OnItemClickListener {
 
     override fun onDeleteClick(experienceDTO: ExperienceDTO) {
         workViewModel.removeWorkExperience(experienceDTO)
+    }
+
+    override fun onEditClick(experienceDTO: ExperienceDTO) {
+        val dialog = AddWorkDialog.newInstance(email, experienceDTO)
+        dialog.show(childFragmentManager, AddWorkDialog.TAG)
     }
 }

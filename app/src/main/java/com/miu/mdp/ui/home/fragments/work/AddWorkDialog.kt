@@ -17,9 +17,10 @@ class AddWorkDialog : DialogFragment() {
 
     companion object {
         const val TAG = "AddWorkDialog"
-        fun newInstance(email: String): AddWorkDialog {
+        fun newInstance(email: String, experienceDTO: ExperienceDTO? = null): AddWorkDialog {
             val args = Bundle()
             args.putString("email", email)
+            args.putParcelable("experience", experienceDTO)
             val fragment = AddWorkDialog()
             fragment.arguments = args
             return fragment
@@ -55,7 +56,16 @@ class AddWorkDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val experienceDTO = arguments?.getParcelable<ExperienceDTO>("experience")
+        experienceDTO?.let {
+            binding.companyEditText.setText(it.companyName)
+            binding.positionEditText.setText(it.position)
+            binding.startDateEditText.setText(it.startDate)
+            binding.companyImageUrlEditText.setText(it.image)
+            binding.endDateEditText.setText(it.endDate)
+            binding.descriptionEditText.setText(it.description)
+            binding.addWorkButton.text = "Update Experience"
+        }
 
         viewModel.addWorkState.observe(viewLifecycleOwner) {
             when (it) {
@@ -101,7 +111,7 @@ class AddWorkDialog : DialogFragment() {
                 return@setOnClickListener
             }
             val experienceDTO = ExperienceDTO(
-                id = 0,
+                id = experienceDTO?.id ?: 0,
                 companyName = companyName,
                 position = position,
                 startDate = startDate,
