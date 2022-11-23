@@ -13,4 +13,10 @@ interface UserDetailDAO : BaseDAO<UserDetailEntity> {
 
     @Query("SELECT contact from userdetail WHERE email = :email")
     fun getContact(email: String): Contact
+
+    @Query("Insert into userdetail (email, contact) values (:email, :contact)")
+    fun insertContact(email: String, contact: Contact)
+
+    @Query("Update userdetail set contact = :contact where email = :email")
+    fun updateContact(email: String, contact: Contact)
 }

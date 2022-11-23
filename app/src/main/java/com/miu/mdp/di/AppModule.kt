@@ -3,6 +3,7 @@ package com.miu.mdp.di
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import androidx.room.RoomDatabase
 import com.miu.mdp.constants.SHARED
 import com.miu.mdp.data.SharedPreferenceHelper
 import com.miu.mdp.data.local.AppDatabase
@@ -27,12 +28,20 @@ object AppModule {
     @Provides
     @Singleton
     fun provideAppDatabase(app: Application): AppDatabase {
-        return Room.databaseBuilder(
+        val builder = Room.databaseBuilder(
             app,
             AppDatabase::class.java,
             AppDatabase.DATABASE_NAME
         )
             .createFromAsset("database/cv_builder.db")
-            .build()
+        builder.setQueryCallback(object : RoomDatabase.QueryCallback {
+            override fun onQuery(sqlQuery: String, bindArgs: List<Any?>) {
+                println("SQL Query: $sqlQuery SQL Args: $bindArgs")
+            }
+        }) {
+            it.run()
+        }
+        return builder.build()
+
     }
 }

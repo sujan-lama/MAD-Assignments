@@ -12,4 +12,12 @@ class ContactRepositoryImpl @Inject constructor(
     override suspend fun getContact(email: String): Contact {
         return userDetailDAO.getContact(email)
     }
+
+    override suspend fun addContact(contact: Contact, email: String) {
+        userDetailDAO.insertContact(email, contact)
+    }
+
+    override suspend fun updateContact(contact: Contact, email: String) {
+        userDetailDAO.updateContact(email, contact)
+    }
 }
