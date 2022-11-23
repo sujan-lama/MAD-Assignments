@@ -30,6 +30,10 @@ class AboutViewModel @Inject constructor(
     private val _addEducationStateLiveData = SingleLiveData<AddEducationState>()
     val addEducationState: SingleLiveData<AddEducationState> = _addEducationStateLiveData
 
+    private val _addCertificationStateLiveData = SingleLiveData<AddCertificationState>()
+    val addCertificationLiveData: SingleLiveData<AddCertificationState> =
+        _addCertificationStateLiveData
+
 
     fun getAboutData(email: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -50,16 +54,35 @@ class AboutViewModel @Inject constructor(
         }
     }
 
-    fun addCertification(certificationDTO: CertificationDTO) {
+    fun addCertification(certificationDTO: CertificationDTO) =
         viewModelScope.launch(Dispatchers.IO) {
-            certificationRepository.insertCertification(certificationDTO)
+
+            _addCertificationStateLiveData.postValue(AddCertificationState.Loading)
+            try {
+                // simulate 1 second delay
+                delay(1000)
+                certificationRepository.insertCertification(certificationDTO)
+                _addCertificationStateLiveData.postValue(AddCertificationState.Success)
+            } catch (e: Exception) {
+                _addCertificationStateLiveData.postValue(
+                    AddCertificationState.Error(
+                        e.message ?: "Error"
+                    )
+                )
+            }
         }
-    }
 
     fun deleteEducation(educationDTO: EducationDTO) {
         viewModelScope.launch(Dispatchers.IO) {
             educationRepository.deleteEducation(educationDTO)
             getAboutData(educationDTO.email)
+        }
+    }
+
+    fun deleteCertification(certificationDTO: CertificationDTO) {
+        viewModelScope.launch(Dispatchers.IO) {
+            certificationRepository.deleteCertification(certificationDTO)
+            getAboutData(certificationDTO.email)
         }
     }
 }

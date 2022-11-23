@@ -169,7 +169,8 @@
     <com.nambimobile.widgets.efab.ExpandableFabLayout
         android:id="@+id/bottom_sheet"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
 
         <com.nambimobile.widgets.efab.Overlay
             android:layout_width="match_parent"

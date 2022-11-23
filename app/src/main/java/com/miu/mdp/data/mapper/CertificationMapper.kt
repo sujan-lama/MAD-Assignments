@@ -4,6 +4,7 @@ import com.miu.mdp.data.local.entity.CertificationEntity
 import com.miu.mdp.domain.model.CertificationDTO
 
 fun CertificationEntity.toCertificationDTO() = CertificationDTO(
+    id = id,
     certificationName = certificationName,
     image = image,
     certificationAuthority = certificationAuthority,
@@ -12,7 +13,7 @@ fun CertificationEntity.toCertificationDTO() = CertificationDTO(
 )
 
 fun CertificationDTO.toCertificationEntity() = CertificationEntity(
-    id = 0,
+    id = id,
     certificationName = certificationName,
     image = image,
     certificationAuthority = certificationAuthority,

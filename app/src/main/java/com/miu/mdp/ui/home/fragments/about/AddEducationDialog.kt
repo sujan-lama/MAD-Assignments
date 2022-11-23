@@ -71,7 +71,7 @@ class AddEducationDialog : DialogFragment() {
                 is AddEducationState.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.addEducationButton.visibility = View.VISIBLE
-                    Toast.makeText(requireContext(), "Work experience added", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), "Education added", Toast.LENGTH_SHORT)
                         .show()
                     viewModel.getAboutData(email)
                     dismiss()

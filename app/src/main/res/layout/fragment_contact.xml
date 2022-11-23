@@ -4,223 +4,248 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="contact"
             type="com.miu.mdp.domain.model.Contact" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_contact"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:elevation="8dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_contact"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp">
+                android:layout_margin="8dp"
+                android:elevation="8dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0">
 
-                <TextView
-                    android:id="@+id/title_contact"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="My Contacts"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/title_contact"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="My Contacts"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/edit"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/title_contact"
+                        app:layout_constraintTop_toTopOf="@+id/title_contact"
+                        app:srcCompat="@drawable/ic_baseline_edit_24" />
 
 
-                <ImageView
-                    android:id="@+id/phone_image"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="16dp"
-                    android:src="@drawable/circle_phone"
-                    app:layout_constraintStart_toStartOf="@+id/title_contact"
-                    app:layout_constraintTop_toBottomOf="@+id/title_contact" />
+                    <ImageView
+                        android:id="@+id/phone_image"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@drawable/circle_phone"
+                        app:layout_constraintStart_toStartOf="@+id/title_contact"
+                        app:layout_constraintTop_toBottomOf="@+id/title_contact" />
 
-                <TextView
-                    android:id="@+id/phoneNumber"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@{contact.phone}"
-                    android:textColor="@color/text_color"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/phone_image"
-                    app:layout_constraintTop_toTopOf="@+id/phone_image"
-                    tools:text="+1 641-123-1234)" />
+                    <TextView
+                        android:id="@+id/phoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{contact.phone}"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/phone_image"
+                        app:layout_constraintTop_toTopOf="@+id/phone_image"
+                        tools:text="+1 641-123-1234)" />
 
-                <TextView
-                    android:id="@+id/type_mobile"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Mobile"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/phoneNumber"
-                    app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
-                    tools:text="Mobile" />
+                    <TextView
+                        android:id="@+id/type_mobile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Mobile"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/phoneNumber"
+                        app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
+                        tools:text="Mobile" />
 
-                <ImageView
-                    android:id="@+id/email_image"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
-                    android:src="@drawable/circle_email"
-                    app:layout_constraintStart_toStartOf="@+id/title_contact"
-                    app:layout_constraintTop_toBottomOf="@+id/phone_image" />
+                    <ImageView
+                        android:id="@+id/email_image"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/circle_email"
+                        app:layout_constraintStart_toStartOf="@+id/title_contact"
+                        app:layout_constraintTop_toBottomOf="@+id/phone_image" />
 
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@{contact.email}"
-                    android:textColor="@color/text_color"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/email_image"
-                    app:layout_constraintTop_toTopOf="@+id/email_image"
-                    tools:text="a@a.com" />
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{contact.email}"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/email_image"
+                        app:layout_constraintTop_toTopOf="@+id/email_image"
+                        tools:text="a@a.com" />
 
-                <TextView
-                    android:id="@+id/type_email"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Email"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/email"
-                    app:layout_constraintTop_toBottomOf="@+id/email"
-                    tools:text="Email" />
+                    <TextView
+                        android:id="@+id/type_email"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Email"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/email"
+                        app:layout_constraintTop_toBottomOf="@+id/email"
+                        tools:text="Email" />
 
-                <ImageView
-                    android:id="@+id/linkedin_image"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
-                    android:src="@drawable/circle_linkedin"
-                    app:layout_constraintStart_toStartOf="@+id/title_contact"
-                    app:layout_constraintTop_toBottomOf="@+id/email_image" />
+                    <ImageView
+                        android:id="@+id/linkedin_image"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/circle_linkedin"
+                        app:layout_constraintStart_toStartOf="@+id/title_contact"
+                        app:layout_constraintTop_toBottomOf="@+id/email_image" />
 
-                <TextView
-                    android:id="@+id/linkedin"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@{contact.linkedInUrl}"
-                    android:textColor="@color/text_color"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/linkedin_image"
-                    app:layout_constraintTop_toTopOf="@+id/linkedin_image"
-                    tools:text="https://www.linkedin.com/in/sujan-lama" />
+                    <TextView
+                        android:id="@+id/linkedin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{contact.linkedInUrl}"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/linkedin_image"
+                        app:layout_constraintTop_toTopOf="@+id/linkedin_image"
+                        tools:text="https://www.linkedin.com/in/sujan-lama" />
 
-                <TextView
-                    android:id="@+id/type_linkedin"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="LinkedIn Website"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/linkedin"
-                    app:layout_constraintTop_toBottomOf="@+id/linkedin" />
+                    <TextView
+                        android:id="@+id/type_linkedin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="LinkedIn Website"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/linkedin"
+                        app:layout_constraintTop_toBottomOf="@+id/linkedin" />
 
-                <ImageView
-                    android:id="@+id/github_image"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
-                    android:src="@drawable/circle_github"
-                    app:layout_constraintStart_toStartOf="@+id/title_contact"
-                    app:layout_constraintTop_toBottomOf="@+id/linkedin_image" />
+                    <ImageView
+                        android:id="@+id/github_image"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/circle_github"
+                        app:layout_constraintStart_toStartOf="@+id/title_contact"
+                        app:layout_constraintTop_toBottomOf="@+id/linkedin_image" />
 
-                <TextView
-                    android:id="@+id/github"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@{contact.githubUrl}"
-                    android:textColor="@color/text_color"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/github_image"
-                    app:layout_constraintTop_toTopOf="@+id/github_image"
-                    tools:text="https://github.com/sujan-lama" />
+                    <TextView
+                        android:id="@+id/github"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{contact.githubUrl}"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/github_image"
+                        app:layout_constraintTop_toTopOf="@+id/github_image"
+                        tools:text="https://github.com/sujan-lama" />
 
-                <TextView
-                    android:id="@+id/type_github"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Github Website"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/github"
-                    app:layout_constraintTop_toBottomOf="@+id/github" />
+                    <TextView
+                        android:id="@+id/type_github"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Github Website"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/github"
+                        app:layout_constraintTop_toBottomOf="@+id/github" />
 
-                <ImageView
-                    android:id="@+id/pdf_image"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="24dp"
-                    android:src="@drawable/pdf_icon"
-                    app:layout_constraintStart_toStartOf="@+id/title_contact"
-                    app:layout_constraintTop_toBottomOf="@+id/github_image" />
+                    <ImageView
+                        android:id="@+id/pdf_image"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="24dp"
+                        android:src="@drawable/pdf_icon"
+                        app:layout_constraintStart_toStartOf="@+id/title_contact"
+                        app:layout_constraintTop_toBottomOf="@+id/github_image" />
 
-                <TextView
-                    android:id="@+id/pdf"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@{contact.pdf}"
-                    android:textColor="@color/text_color"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/pdf_image"
-                    app:layout_constraintTop_toTopOf="@+id/pdf_image"
-                    tools:text="PDF" />
+                    <TextView
+                        android:id="@+id/pdf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{contact.pdf}"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/pdf_image"
+                        app:layout_constraintTop_toTopOf="@+id/pdf_image"
+                        tools:text="PDF" />
 
-                <TextView
-                    android:id="@+id/type_pdf"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Resume PDF"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/pdf"
-                    app:layout_constraintTop_toBottomOf="@+id/pdf" />
+                    <TextView
+                        android:id="@+id/type_pdf"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Resume PDF"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/pdf"
+                        app:layout_constraintTop_toBottomOf="@+id/pdf" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@drawable/ic_add" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
