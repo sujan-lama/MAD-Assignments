@@ -10,8 +10,10 @@ import com.miu.mdp.domain.model.EducationDTO
 import com.miu.mdp.domain.repository.AboutRepository
 import com.miu.mdp.domain.repository.CertificationRepository
 import com.miu.mdp.domain.repository.EducationRepository
+import com.miu.mdp.utils.SingleLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,6 +27,10 @@ class AboutViewModel @Inject constructor(
     private val _aboutDTO = MutableLiveData<AboutDTO>()
     val aboutDTO: LiveData<AboutDTO> = _aboutDTO
 
+    private val _addEducationStateLiveData = SingleLiveData<AddEducationState>()
+    val addEducationState: SingleLiveData<AddEducationState> = _addEducationStateLiveData
+
+
     fun getAboutData(email: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val aboutDataList = aboutRepository.getAboutData(email)
@@ -32,15 +38,28 @@ class AboutViewModel @Inject constructor(
         }
     }
 
-    fun addEducation(educationDTO: EducationDTO) {
-        viewModelScope.launch(Dispatchers.IO) {
+    fun addEducation(educationDTO: EducationDTO) = viewModelScope.launch(Dispatchers.IO) {
+        _addEducationStateLiveData.postValue(AddEducationState.Loading)
+        try {
+            // simulate 1 second delay
+            delay(1000)
             educationRepository.insertEducation(educationDTO)
+            _addEducationStateLiveData.postValue(AddEducationState.Success)
+        } catch (e: Exception) {
+            _addEducationStateLiveData.postValue(AddEducationState.Error(e.message ?: "Error"))
         }
     }
 
     fun addCertification(certificationDTO: CertificationDTO) {
         viewModelScope.launch(Dispatchers.IO) {
             certificationRepository.insertCertification(certificationDTO)
+        }
+    }
+
+    fun deleteEducation(educationDTO: EducationDTO) {
+        viewModelScope.launch(Dispatchers.IO) {
+            educationRepository.deleteEducation(educationDTO)
+            getAboutData(educationDTO.email)
         }
     }
 }

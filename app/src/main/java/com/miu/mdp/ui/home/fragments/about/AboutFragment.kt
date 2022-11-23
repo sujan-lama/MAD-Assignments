@@ -8,12 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.miu.mdp.databinding.FragmentAboutBinding
+import com.miu.mdp.domain.model.EducationDTO
 import com.miu.mdp.ui.home.adapter.CertificationAdapter
 import com.miu.mdp.ui.home.adapter.EducationAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AboutFragment : Fragment() {
+class AboutFragment : Fragment(), EducationAdapter.OnItemClickListener {
 
     companion object {
         const val TAG = "AboutFragment"
@@ -31,8 +32,10 @@ class AboutFragment : Fragment() {
 
     private val viewModel: AboutViewModel by activityViewModels()
 
-    private val educationAdapter = EducationAdapter()
+    private val educationAdapter = EducationAdapter(this)
     private val certificationAdapter = CertificationAdapter()
+
+    private var email: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,12 +48,18 @@ class AboutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val email = arguments?.getString("email") ?: ""
+        email = arguments?.getString("email") ?: ""
         viewModel.getAboutData(email)
         binding.educationRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.certificationRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.educationRecyclerView.adapter = educationAdapter
         binding.certificationRecyclerView.adapter = certificationAdapter
+
+        binding.fabAddEducation.setOnClickListener {
+            val dialog = AddEducationDialog.newInstance(email)
+            dialog.show(parentFragmentManager, AddEducationDialog.TAG)
+        }
+
         viewModel.aboutDTO.observe(viewLifecycleOwner) {
             if (it == null) return@observe
             binding.aboutMe.text = it.aboutMe
@@ -62,5 +71,14 @@ class AboutFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDeleteClick(educationDTO: EducationDTO) {
+        viewModel.deleteEducation(educationDTO)
+    }
+
+    override fun onEditClick(educationDTO: EducationDTO) {
+        val dialog = AddEducationDialog.newInstance(email, educationDTO)
+        dialog.show(parentFragmentManager, AddEducationDialog.TAG)
     }
 }

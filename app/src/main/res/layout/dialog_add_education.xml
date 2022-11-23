@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Work Experience"
+        android:text="Education"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -30,11 +30,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/companyNameTextInputLayout"
+        android:id="@+id/schoolNameTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="Company Name"
+        android:hint="School Name"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/companyEditText"
+            android:id="@+id/schoolNameEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
@@ -51,20 +51,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/companyImageTextInputLayout"
+        android:id="@+id/schoolImageTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Company Image URL"
+        android:hint="School Image URL"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/companyNameTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/schoolNameTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/companyImageUrlEditText"
+            android:id="@+id/schoolImageUrlEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
@@ -73,20 +73,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/positionTextInputLayout"
+        android:id="@+id/degreeTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Position"
+        android:hint="Degree"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/companyImageTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/schoolImageTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/positionEditText"
+            android:id="@+id/degreeEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
@@ -104,7 +104,7 @@
         app:layout_constraintEnd_toStartOf="@+id/endDateTextInputLayout"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/positionTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/degreeTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/startDateEditText"
@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/startDateTextInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/positionTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/degreeTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/endDateEditText"
@@ -138,40 +138,19 @@
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descriptionTextInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Job Description"
-        android:textSize="14sp"
-        app:helperTextTextColor="@android:color/holo_red_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startDateTextInputLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/descriptionEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/edittext_background"
-            android:inputType="textMultiLine"
-            android:textSize="16sp" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addWorkButton"
+        android:id="@+id/addEducationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
-        android:text="Add Work"
+        android:text="Add Education"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateTextInputLayout" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -181,6 +160,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateTextInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

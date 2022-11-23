@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Work Experience"
+        android:text="Certification"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -30,11 +30,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/companyNameTextInputLayout"
+        android:id="@+id/certificationNameTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:hint="Company Name"
+        android:hint="Certification Name"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/companyEditText"
+            android:id="@+id/certificationNameEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
@@ -51,20 +51,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/companyImageTextInputLayout"
+        android:id="@+id/certImageTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Company Image URL"
+        android:hint="Certification Image URL"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/companyNameTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/certificationNameTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/companyImageUrlEditText"
+            android:id="@+id/certImageUrlEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
@@ -73,20 +73,20 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/positionTextInputLayout"
+        android:id="@+id/authorityTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Position"
+        android:hint="Certification Authority"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/companyImageTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/certImageTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/positionEditText"
+            android:id="@+id/authorityEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
@@ -94,69 +94,24 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/startDateTextInputLayout"
+        android:id="@+id/expirationDateTextInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="Start Date"
+        android:hint="Expiration Date"
         android:textSize="14sp"
         app:helperTextTextColor="@android:color/holo_red_dark"
-        app:layout_constraintEnd_toStartOf="@+id/endDateTextInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/positionTextInputLayout">
+        app:layout_constraintTop_toBottomOf="@+id/authorityTextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/startDateEditText"
+            android:id="@+id/expirationDateEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
             android:inputType="date"
-            android:textSize="16sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/endDateTextInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:hint="End Date"
-        android:textSize="14sp"
-        app:helperTextTextColor="@android:color/holo_red_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toEndOf="@+id/startDateTextInputLayout"
-        app:layout_constraintTop_toBottomOf="@+id/positionTextInputLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/endDateEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/edittext_background"
-            android:inputType="date"
-            android:textSize="16sp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/descriptionTextInputLayout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Job Description"
-        android:textSize="14sp"
-        app:helperTextTextColor="@android:color/holo_red_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startDateTextInputLayout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/descriptionEditText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/edittext_background"
-            android:inputType="textMultiLine"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,12 +121,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="8dp"
-        android:text="Add Work"
+        android:text="Add Certification"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/expirationDateTextInputLayout" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -181,6 +136,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/expirationDateTextInputLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

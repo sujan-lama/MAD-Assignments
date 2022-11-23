@@ -56,6 +56,7 @@ fun getMockExperience(email: String) = listOf(
 
 fun getMockEducation(email: String) = listOf(
     EducationDTO(
+        id = 0,
         schoolName = "University of Iowa",
         degree = "Master of Science",
         startDate = "2017",
@@ -64,6 +65,7 @@ fun getMockEducation(email: String) = listOf(
         email = email
     ),
     EducationDTO(
+        id = 0,
         schoolName = "University of Iowa",
         degree = "Bachelor of Science",
         startDate = "2013",

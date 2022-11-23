@@ -4,6 +4,7 @@ import com.miu.mdp.data.local.entity.EducationEntity
 import com.miu.mdp.domain.model.EducationDTO
 
 fun EducationEntity.toEducationDTO() = EducationDTO(
+    id = id,
     schoolName = schoolName,
     image = image,
     degree = degree,
@@ -13,7 +14,7 @@ fun EducationEntity.toEducationDTO() = EducationDTO(
 )
 
 fun EducationDTO.toEducationEntity() = EducationEntity(
-    id = 0,
+    id = id,
     schoolName = schoolName,
     image = image,
     degree = degree,
