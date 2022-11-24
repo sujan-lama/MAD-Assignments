@@ -38,3 +38,27 @@ fun TextInputLayout.validateEmpty(): Boolean {
     }
 }
 
+fun String.validatePhone(): Boolean {
+    return if (this.isEmpty()) {
+        false
+    } else {
+        android.util.Patterns.PHONE.matcher(this).matches()
+    }
+}
+
+fun String.validateEmail(): Boolean {
+    return if (this.isEmpty()) {
+        false
+    } else {
+        android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
+    }
+}
+
+fun String.validateURL(): Boolean {
+    return if (this.isEmpty()) {
+        false
+    } else {
+        android.util.Patterns.WEB_URL.matcher(this).matches()
+    }
+}
+

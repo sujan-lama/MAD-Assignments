@@ -48,6 +48,7 @@
             android:layout_height="match_parent"
             android:autofillHints="phone"
             android:background="@drawable/edittext_background"
+            android:inputType="phone"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +71,7 @@
             android:layout_height="match_parent"
             android:autofillHints="emailAddress"
             android:background="@drawable/edittext_background"
-            android:inputType="textUri"
+            android:inputType="textEmailAddress"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,6 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
+            android:inputType="textUri"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
-            android:inputType="date"
+            android:inputType="textUri"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/edittext_background"
-            android:inputType="date"
+            android:inputType="textUri"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

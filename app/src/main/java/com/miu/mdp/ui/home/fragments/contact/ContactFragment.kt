@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.databinding.FragmentContactBinding
 import com.miu.mdp.domain.model.Contact
+import com.miu.mdp.utils.startEmailIntent
+import com.miu.mdp.utils.startPhoneIntent
+import com.miu.mdp.utils.startWebIntent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,6 +58,26 @@ class ContactFragment : Fragment() {
             binding.fabAddContact.visibility = View.GONE
             binding.cardContact.visibility = View.VISIBLE
             binding.contact = it
+            setListener(it)
+        }
+    }
+
+    private fun setListener(contact: Contact) {
+        binding.phoneLayout.root.setOnClickListener {
+            contact.phone.startPhoneIntent(requireContext())
+        }
+        binding.emailLayout.root.setOnClickListener {
+            contact.email.startEmailIntent(requireContext())
+        }
+        binding.linkedinLayout.root.setOnClickListener {
+            contact.getLinkedInUrl().startWebIntent(requireContext())
+        }
+
+        binding.githubLayout.root.setOnClickListener {
+            contact.getGithubUrl().startWebIntent(requireContext())
+        }
+        binding.pdfLayout.root.setOnClickListener {
+            contact.pdf.startWebIntent(requireContext())
         }
     }
 

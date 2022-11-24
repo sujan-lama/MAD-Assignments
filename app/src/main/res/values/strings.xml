@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MDP Assignments</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="linkedin">LinkedIn</string>
+    <string name="github">GitHub</string>
+    <string name="pdf">Resume PDF</string>
 </resources>
