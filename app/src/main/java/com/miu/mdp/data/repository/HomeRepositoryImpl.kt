@@ -11,8 +11,13 @@ class HomeRepositoryImpl @Inject constructor(
 ) : HomeRepository {
 
     private val homeDAO = appDatabase.homeDao()
-    override suspend fun getHomeData(email: String): HomeDataDTO {
-        return homeDAO.getHomeData(email).toHomeDataDTO()
+    override suspend fun getHomeData(email: String): HomeDataDTO? {
+        return try {
+            val homeData = homeDAO.getHomeData(email) ?: return null
+            homeData.toHomeDataDTO()
+        } catch (e: Exception) {
+            null
+        }
     }
 
 }

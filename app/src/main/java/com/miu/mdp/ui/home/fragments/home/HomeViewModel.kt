@@ -23,8 +23,10 @@ class HomeViewModel @Inject constructor(
 
 
     fun getHomeData(email: String) = viewModelScope.launch(Dispatchers.IO) {
-        val userDetail = homeRepository.getHomeData(email)
-        _homeDataLiveData.postValue(userDetail)
+        val homeData = homeRepository.getHomeData(email)
+        homeData?.let {
+            _homeDataLiveData.postValue(it)
+        }
     }
 
 

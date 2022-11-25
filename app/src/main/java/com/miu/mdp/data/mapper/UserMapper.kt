@@ -9,3 +9,10 @@ fun UserEntity.toUserDTO() = UserDTO(
     username = username,
     password = password
 )
+
+fun UserDTO.toUserEntity() = UserEntity(
+    firstName = firstName,
+    lastName = lastName,
+    username = username,
+    password = password
+)

@@ -3,6 +3,7 @@ package com.miu.mdp.data.repository
 import com.miu.mdp.data.SharedPreferenceHelper
 import com.miu.mdp.data.local.AppDatabase
 import com.miu.mdp.data.mapper.toUserDTO
+import com.miu.mdp.data.mapper.toUserEntity
 import com.miu.mdp.domain.model.UserDTO
 import com.miu.mdp.domain.repository.UserRepository
 import javax.inject.Inject
@@ -26,6 +27,7 @@ class UserRepositoryImpl @Inject constructor(
         if (existingUser != null && existingUser.username == userDTO.username) {
             return false
         }
+        dao.insert(userDTO.toUserEntity())
         return true
     }
 

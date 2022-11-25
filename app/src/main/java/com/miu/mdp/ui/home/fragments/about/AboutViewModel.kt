@@ -38,7 +38,9 @@ class AboutViewModel @Inject constructor(
     fun getAboutData(email: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val aboutDataList = aboutRepository.getAboutData(email)
-            _aboutDTO.postValue(aboutDataList)
+            aboutDataList?.let {
+                _aboutDTO.postValue(it)
+            }
         }
     }
 

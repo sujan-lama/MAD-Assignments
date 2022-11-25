@@ -11,6 +11,7 @@ import com.miu.mdp.domain.model.Contact
 import com.miu.mdp.utils.startEmailIntent
 import com.miu.mdp.utils.startPhoneIntent
 import com.miu.mdp.utils.startWebIntent
+import com.miu.mdp.utils.startWebView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,6 +50,10 @@ class ContactFragment : Fragment() {
             val dialog = AddContactDialog.newInstance(email, binding.contact)
             dialog.show(parentFragmentManager, AddContactDialog.TAG)
         }
+        binding.fabAddContact.setOnClickListener {
+            val dialog = AddContactDialog.newInstance(email)
+            dialog.show(parentFragmentManager, AddContactDialog.TAG)
+        }
         viewModel.contactLiveData.observe(viewLifecycleOwner) {
             if (it == null) {
                 binding.cardContact.visibility = View.GONE
@@ -70,14 +75,14 @@ class ContactFragment : Fragment() {
             contact.email.startEmailIntent(requireContext())
         }
         binding.linkedinLayout.root.setOnClickListener {
-            contact.getLinkedInUrl().startWebIntent(requireContext())
+            contact.getLinkedInUrl().startWebView(requireContext())
         }
 
         binding.githubLayout.root.setOnClickListener {
-            contact.getGithubUrl().startWebIntent(requireContext())
+            contact.getGithubUrl().startWebView(requireContext())
         }
         binding.pdfLayout.root.setOnClickListener {
-            contact.pdf.startWebIntent(requireContext())
+            contact.pdf.startWebView(requireContext())
         }
     }
 

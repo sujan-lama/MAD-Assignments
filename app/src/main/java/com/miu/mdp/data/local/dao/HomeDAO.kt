@@ -9,8 +9,8 @@ import com.miu.mdp.domain.model.*
 @Dao
 interface HomeDAO {
 
-    @Transaction
     @Query("SELECT * FROM user WHERE username = :email")
-    fun getHomeData(email: String): HomeData
+    @Transaction
+    fun getHomeData(email: String): HomeData?
 
 }

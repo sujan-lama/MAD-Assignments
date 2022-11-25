@@ -9,7 +9,11 @@ import javax.inject.Inject
 class AboutRepositoryImpl @Inject constructor(
     private val appDatabase: AppDatabase
 ) : AboutRepository {
-    override fun getAboutData(email: String): AboutDTO {
-        return appDatabase.aboutDAO().getAboutData(email).toAboutDTO()
+    override fun getAboutData(email: String): AboutDTO? {
+        return try {
+            appDatabase.aboutDAO().getAboutData(email)?.toAboutDTO()
+        } catch (e: Exception) {
+            null
+        }
     }
 }
