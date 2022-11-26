@@ -2,6 +2,7 @@ package com.miu.mdp.data.repository
 
 import com.miu.mdp.data.SharedPreferenceHelper
 import com.miu.mdp.data.local.AppDatabase
+import com.miu.mdp.data.local.mock.getUserDetailMock
 import com.miu.mdp.data.mapper.toUserDTO
 import com.miu.mdp.data.mapper.toUserEntity
 import com.miu.mdp.domain.model.UserDTO
@@ -28,6 +29,8 @@ class UserRepositoryImpl @Inject constructor(
             return false
         }
         dao.insert(userDTO.toUserEntity())
+        // add mock data
+        appDatabase.userDetailDao().insert(getUserDetailMock(userDTO))
         return true
     }
 

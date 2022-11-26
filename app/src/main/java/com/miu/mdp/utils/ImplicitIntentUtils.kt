@@ -50,13 +50,12 @@ fun String.startWebIntent(context: Context) {
     }
 }
 
-fun String.startWebView(context: Context) {
+fun String.startWebView(context: Context, title: String) {
     if (this.isEmpty() || !this.validateURL()) {
         return
     }
     try {
-        val intent = Intent(context, WebViewActivity::class.java)
-        intent.putExtra(WebViewActivity.URL, this)
+        val intent = WebViewActivity.newInstance(context, this, title)
         context.startActivity(intent)
     } catch (e: ActivityNotFoundException) {
         Toast.makeText(context, "No application found to handle this action", Toast.LENGTH_SHORT)

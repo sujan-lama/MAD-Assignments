@@ -13,6 +13,7 @@ data class Contact(
 ) : Parcelable {
 
     fun getLinkedInUrl(): String {
+        if (linkedIn == "N/A") return linkedIn
         if (linkedIn.startsWith("https://www.linkedin.com/in/")) {
             return linkedIn
         }
@@ -20,6 +21,7 @@ data class Contact(
     }
 
     fun getGithubUrl(): String {
+        if (github == "N/A") return github
         if (github.startsWith("https://github.com/")) {
             return github
         }

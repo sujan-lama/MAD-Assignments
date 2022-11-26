@@ -10,9 +10,10 @@ class WebViewActivity : AppCompatActivity() {
 
     companion object {
         const val URL = "url"
-        fun newInstance(context: Context, url: String): Intent {
+        fun newInstance(context: Context, url: String, title: String): Intent {
             val intent = Intent(context, WebViewActivity::class.java)
             intent.putExtra(URL, url)
+            intent.putExtra("title", title)
             return intent
         }
     }
@@ -25,10 +26,10 @@ class WebViewActivity : AppCompatActivity() {
         _binding = ActivityWebViewBinding.inflate(layoutInflater)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        title = ""
+        title = intent.getStringExtra("title") ?: ""
         setContentView(binding.root)
         val url = intent.getStringExtra(URL) ?: ""
-        with(binding.webview){
+        with(binding.webview) {
             webViewClient = MyWebViewClient()
             settings.loadsImagesAutomatically = true
             settings.javaScriptEnabled = true

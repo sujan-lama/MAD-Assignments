@@ -10,7 +10,6 @@ import com.miu.mdp.databinding.FragmentContactBinding
 import com.miu.mdp.domain.model.Contact
 import com.miu.mdp.utils.startEmailIntent
 import com.miu.mdp.utils.startPhoneIntent
-import com.miu.mdp.utils.startWebIntent
 import com.miu.mdp.utils.startWebView
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -75,14 +74,19 @@ class ContactFragment : Fragment() {
             contact.email.startEmailIntent(requireContext())
         }
         binding.linkedinLayout.root.setOnClickListener {
-            contact.getLinkedInUrl().startWebView(requireContext())
+            contact.getLinkedInUrl()
+                .startWebView(requireContext(), binding.linkedinLayout.getSubtitle().toString())
         }
 
         binding.githubLayout.root.setOnClickListener {
-            contact.getGithubUrl().startWebView(requireContext())
+            contact.getGithubUrl()
+                .startWebView(requireContext(), binding.githubLayout.getSubtitle().toString())
         }
         binding.pdfLayout.root.setOnClickListener {
-            contact.pdf.startWebView(requireContext())
+            contact.pdf.startWebView(
+                requireContext(),
+                binding.pdfLayout.getSubtitle().toString()
+            )
         }
     }
 
