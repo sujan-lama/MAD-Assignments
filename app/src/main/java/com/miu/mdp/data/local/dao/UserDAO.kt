@@ -9,6 +9,8 @@ interface UserDAO : BaseDAO<UserEntity> {
 
 
     @Query("SELECT * FROM user WHERE username = :username AND password = :password")
-    fun getUser(username: String, password: String): UserEntity?
+    fun login(username: String, password: String): UserEntity?
 
+    @Query("SELECT * FROM user WHERE username = :username")
+    fun getUser(username: String): UserEntity?
 }

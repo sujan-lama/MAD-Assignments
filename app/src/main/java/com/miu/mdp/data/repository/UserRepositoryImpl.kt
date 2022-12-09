@@ -18,13 +18,13 @@ class UserRepositoryImpl @Inject constructor(
     private val dao = appDatabase.userDao()
 
     override suspend fun login(username: String, password: String): UserDTO? {
-        val user = dao.getUser(username, password) ?: return null
+        val user = dao.login(username, password) ?: return null
         sharedPreferenceHelper.user = user.toUserDTO()
         return user.toUserDTO()
     }
 
     override suspend fun register(userDTO: UserDTO): Boolean {
-        val existingUser = dao.getUser(userDTO.username, userDTO.password)
+        val existingUser = dao.getUser(userDTO.username)
         if (existingUser != null && existingUser.username == userDTO.username) {
             return false
         }
