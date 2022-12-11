@@ -5,29 +5,30 @@ Assignments:
 
 ## CV Builder Project
 
-Database : Room Database, Shared Preference 
 
-Dependency Injection : Hilt
+**Database** : Room Database, Shared Preference 
 
-Architecture: Clean MVVM 
+**Dependency Injection** : Hilt
 
-Data Binding and View Binding
+**Architecture**: Clean MVVM 
 
-Default Email : np.sujanlama@gmail.com
+**Data Binding** and **View Binding**
 
-Default Password : 123456
+Default email : np.sujanlama@gmail.com
+
+Default password : 123456
 
 
-Screenshots:
+## Screenshots:
 
-Login and Register Flow:
+**Login and Register Flow:**
 <p float="left">
   <img src="/1.png" width="250" />
   <img src="/2.png" width="250"/> 
   <img src="/3.png" width="250"/>
 </p>
 
-Home Screen Flow:
+**Home Screen Flow:**
 <p float="left">
   <img src="/4.png" width="250" />
   <img src="/5.png" width="250"/> 
@@ -38,7 +39,7 @@ Home Screen Flow:
   <img src="/9.png" width="250"/> 
 </p>
 
-Add Education/Certification/Work Experience/Contact Flow:
+**Add Education/Certification/Work Experience/Contact Flow:**
 <p float="left">
   <img src="/10.png" width="250" />
   <img src="/11.png" width="250"/> 
@@ -47,19 +48,19 @@ Add Education/Certification/Work Experience/Contact Flow:
   <img src="/14.png" width="250"/> 
 </p>
 
-Implicit Intent Flow:
+**Implicit Intent Flow:**
 <p float="left">
   <img src="/15.png" width="250" />
   <img src="/16.png" width="250"/> 
 </p>
 
-Webview Flow
+**Webview Flow**
 <p float="left">
   <img src="/17.png" width="250" />
   <img src="/18.png" width="250"/> 
 </p>
 
-Logout Flow:
+**Logout Flow:**
 <p float="left">
   <img src="/19.png" width="250" />
   <img src="/1.png" width="250"/> 
