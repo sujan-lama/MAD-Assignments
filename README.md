@@ -5,6 +5,15 @@ Assignments:
 
 ## CV Builder Project
 
+Database : Room Database, Shared Preference
+Dependency Injection : Hilt
+Architecture: Clean MVVM 
+Data Binding and View Binding
+
+Default Email : np.sujanlama@gmail.com
+Default Password : 123456
+
+
 Screenshots:
 
 Login and Register Flow:
