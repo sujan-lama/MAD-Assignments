@@ -14,3 +14,5 @@ Walmart shopping, register activity and forgot password flow: https://github.com
 Quiz Assignment : https://github.com/sujan-lama/MDP-Assignments/tree/quiz-input-controls
 
 Walmart Electronics page recyclerview: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-electronics-page
+
+CV builder project : https://github.com/sujan-lama/MDP-Assignments/tree/cv-builder-project
