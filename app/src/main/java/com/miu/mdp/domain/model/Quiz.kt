@@ -1,6 +1,6 @@
-package com.miu.mdp.domain.dto
+package com.miu.mdp.domain.model
 
-data class QuizDTO(
+data class Quiz(
     val id: Int,
     val question: String,
     val answer: String,

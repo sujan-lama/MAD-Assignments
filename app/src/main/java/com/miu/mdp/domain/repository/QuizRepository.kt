@@ -1,9 +1,9 @@
 package com.miu.mdp.domain.repository
 
-import com.miu.mdp.domain.dto.QuizDTO
+import com.miu.mdp.domain.model.Quiz
 
 interface QuizRepository {
-    suspend fun getQuizById(id: Int): QuizDTO?
-    suspend fun getQuizList(): List<QuizDTO>
-    suspend fun saveQuiz(quiz: QuizDTO)
+    suspend fun getQuizById(id: Int): Quiz?
+    suspend fun getQuizList(): List<Quiz>
+    suspend fun saveQuiz(quiz: Quiz)
 }

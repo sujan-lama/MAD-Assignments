@@ -5,9 +5,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.miu.mdp.data.local.convertors.Converters
 import com.miu.mdp.data.local.dao.QuizDAO
-import com.miu.mdp.data.local.entity.Quiz
+import com.miu.mdp.data.local.entity.QuizEntity
 
-@Database(entities = [Quiz::class], version = 1)
+@Database(entities = [QuizEntity::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 

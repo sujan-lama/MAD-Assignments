@@ -1,17 +1,19 @@
 package com.miu.mdp.data.mapper
 
-import com.miu.mdp.data.local.entity.Quiz
-import com.miu.mdp.domain.dto.QuizDTO
+import com.miu.mdp.data.local.entity.QuizEntity
+import com.miu.mdp.domain.model.Quiz
 
-fun Quiz.toDTO() = QuizDTO(
-    id = id,
-    question = question,
-    answer = answer,
-    options = options,
-    userAnswer = userAnswer
-)
+fun QuizEntity.toQuiz(): Quiz {
+    return Quiz(
+        id = id,
+        question = question,
+        answer = answer,
+        options = options,
+        userAnswer = userAnswer
+    )
+}
 
-fun QuizDTO.toEntity() = Quiz(
+fun Quiz.toEntity() = QuizEntity(
     id = id,
     question = question,
     answer = answer,
