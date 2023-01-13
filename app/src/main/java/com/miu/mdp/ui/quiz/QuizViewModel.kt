@@ -27,6 +27,8 @@ class QuizViewModel @Inject constructor(
     val correctAnswerIndexList = mutableListOf<Int>()
     val incorrectAnswerIndexList = mutableListOf<Map<Int, String>>()
 
+    private val _resetLiveData = MutableLiveData(false)
+    val resetLiveData: LiveData<Boolean> = _resetLiveData
 
     init {
         fetchQuestions()
@@ -96,10 +98,12 @@ class QuizViewModel @Inject constructor(
         }
     }
 
+
     fun resetQuiz() {
         currentQuestionNumber = 1
         correctAnswerIndexList.clear()
         incorrectAnswerIndexList.clear()
         loadQuestion(currentQuestionNumber)
+        _resetLiveData.value = _resetLiveData.value?.not()
     }
 }

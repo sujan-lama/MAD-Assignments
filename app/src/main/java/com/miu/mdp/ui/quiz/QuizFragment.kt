@@ -59,8 +59,11 @@ class QuizFragment : Fragment(), View.OnClickListener {
                 findNavController().navigate(directions)
             } else {
                 quizViewModel.loadNextQuestion()
-                binding.quizNextBtn.visibility = View.INVISIBLE
             }
+            resetOptions()
+        }
+
+        quizViewModel.resetLiveData.observe(viewLifecycleOwner) {
             resetOptions()
         }
 
@@ -106,6 +109,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
     }
 
     private fun resetOptions() {
+//        binding.quizNextBtn.visibility = View.GONE
         setButtonState(true)
         binding.quizOptionA.backgroundTintList =
             ContextCompat.getColorStateList(requireContext(), R.color.colorBackground)

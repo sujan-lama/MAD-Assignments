@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_quiz">
         <action
             android:id="@+id/action_quizFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpTo="@id/quizFragment" />
         <action
             android:id="@+id/action_quizFragment_to_onboardingFragment"
             app:destination="@id/onboardingFragment" />
@@ -41,6 +42,12 @@
         tools:layout="@layout/fragment_onboarding">
         <action
             android:id="@+id/action_onboardingFragment_to_quizFragment"
-            app:destination="@id/quizFragment" />
+            app:destination="@id/quizFragment"
+            app:popUpTo="@id/onboardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
+    <action
+        android:id="@+id/action_global_onboardingFragment"
+        app:destination="@id/onboardingFragment" />
 </navigation>
