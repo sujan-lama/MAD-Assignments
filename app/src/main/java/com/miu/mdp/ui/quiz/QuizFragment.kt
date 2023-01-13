@@ -59,6 +59,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
                 findNavController().navigate(directions)
             } else {
                 quizViewModel.loadNextQuestion()
+                binding.quizNextBtn.visibility = View.INVISIBLE
             }
             resetOptions()
         }
@@ -76,8 +77,8 @@ class QuizFragment : Fragment(), View.OnClickListener {
         setButtonState(false)
         if (quizViewModel.currentQuestionNumber >= quizViewModel.totalQuestionToAnswer) {
             binding.quizNextBtn.text = "Show Results"
-        } else
-            binding.quizNextBtn.visibility = View.VISIBLE
+        }
+        binding.quizNextBtn.visibility = View.VISIBLE
     }
 
     private fun setButtonState(enable: Boolean) {
