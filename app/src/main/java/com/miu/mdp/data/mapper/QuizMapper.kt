@@ -8,8 +8,7 @@ fun QuizEntity.toQuiz(): Quiz {
         id = id,
         question = question,
         answer = answer,
-        options = options,
-        userAnswer = userAnswer
+        options = options
     )
 }
 
@@ -17,6 +16,5 @@ fun Quiz.toEntity() = QuizEntity(
     id = id,
     question = question,
     answer = answer,
-    options = options,
-    userAnswer = userAnswer
+    options = options
 )

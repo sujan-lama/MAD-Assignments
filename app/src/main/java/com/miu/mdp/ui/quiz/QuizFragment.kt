@@ -40,7 +40,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         quizViewModel.currentQuiz.observe(viewLifecycleOwner) { quiz ->
-            binding.quizQuestion.text = quiz.question
+            binding.quizQuestion.text = "${quizViewModel.currentQuestionNumber}. ${quiz.question}"
             binding.quizOptionA.text = quiz.options[0]
             binding.quizOptionB.text = quiz.options[1]
             binding.quizOptionC.text = quiz.options[2]
@@ -109,7 +109,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
     }
 
     private fun resetOptions() {
-//        binding.quizNextBtn.visibility = View.GONE
+        binding.quizNextBtn.visibility = View.GONE
         setButtonState(true)
         binding.quizOptionA.backgroundTintList =
             ContextCompat.getColorStateList(requireContext(), R.color.colorBackground)

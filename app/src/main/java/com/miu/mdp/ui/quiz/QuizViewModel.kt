@@ -37,6 +37,7 @@ class QuizViewModel @Inject constructor(
     private fun fetchQuestions() {
         viewModelScope.launch(Dispatchers.Main) {
             allQuestionList = repository.getQuizList().toMutableList()
+            allQuestionList.shuffle()
             totalQuestionToAnswer = allQuestionList.size.toLong()
             loadQuestion(currentQuestionNumber)
         }

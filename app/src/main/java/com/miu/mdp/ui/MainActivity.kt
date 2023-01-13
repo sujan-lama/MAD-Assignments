@@ -14,6 +14,7 @@ import com.miu.mdp.R
 import com.miu.mdp.databinding.ActivityMainBinding
 import com.miu.mdp.ui.quiz.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private val quizViewModel: QuizViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
+
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -31,12 +34,11 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment)!!.findNavController()
         val appBarConfiguration = AppBarConfiguration(navController.graph)
         setSupportActionBar(binding.toolbar)
-        //actionbar title
         setupActionBarWithNavController(this, navController, appBarConfiguration)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.onboardingFragment -> {
+                R.id.onboardingFragment, R.id.splashFragment -> {
                     supportActionBar?.hide()
                     binding.toolbar.title = "QUIZ APP"
                 }
@@ -64,6 +66,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         menu?.findItem(R.id.action_restart)?.isVisible =
+            quizViewModel.currentQuestionNumber < quizViewModel.totalQuestionToAnswer
+        menu?.findItem(R.id.action_onboarding)?.isVisible =
             quizViewModel.currentQuestionNumber < quizViewModel.totalQuestionToAnswer
         return true
     }

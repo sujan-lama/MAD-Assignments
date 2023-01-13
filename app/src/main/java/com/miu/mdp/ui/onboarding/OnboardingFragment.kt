@@ -5,16 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.miu.mdp.databinding.FragmentOnboardingBinding
+import com.miu.mdp.ui.onboarding.viewmodel.OnboardingViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OnboardingFragment : Fragment() {
 
     private var _binding: FragmentOnboardingBinding? = null
     private val binding get() = _binding!!
-
+    private val viewModel: OnboardingViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +29,7 @@ class OnboardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.saveOnboardingDone(false)
         binding.apply {
             viewPager.adapter =
                 OnboardingViewPagerAdapter(this@OnboardingFragment, requireContext())
@@ -61,6 +66,7 @@ class OnboardingFragment : Fragment() {
 
     private fun nextpage() {
         // go to next page
+        viewModel.saveOnboardingDone(true)
         val directions =
             OnboardingFragmentDirections.actionOnboardingFragmentToQuizFragment()
         findNavController().navigate(directions)
