@@ -2,6 +2,7 @@ package com.miu.mdp.ui.result
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,9 +34,21 @@ class ResultAdapter : ListAdapter<ResultModel, ResultAdapter.ViewHolder>(DiffCal
                 questionTextView.text = item.quiz.question
                 correctAnswerTextView.text = item.correctAnswer
                 yourAnswerTextView.text = item.yourAnswer
+                correctAnswerTextView.setTextColor(
+                    ContextCompat.getColor(
+                        root.context,
+                        android.R.color.holo_green_dark
+                    )
+                )
+                yourAnswerTextView.setTextColor(
+                    ContextCompat.getColor(
+                        root.context,
+                        if (correctAnswerTextView.text == yourAnswerTextView.text) android.R.color.holo_green_dark else android.R.color.holo_red_dark
+                    )
+                )
             }
-        }
 
+        }
     }
 
     class DiffCallback : DiffUtil.ItemCallback<ResultModel>() {

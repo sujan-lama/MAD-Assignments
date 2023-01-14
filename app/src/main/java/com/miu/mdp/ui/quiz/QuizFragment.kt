@@ -1,7 +1,6 @@
 package com.miu.mdp.ui.quiz
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,27 +39,21 @@ class QuizFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         quizViewModel.currentQuiz.observe(viewLifecycleOwner) { quiz ->
-            binding.quizQuestion.text = "${quizViewModel.currentQuestionNumber}. ${quiz.question}"
-            binding.quizOptionA.text = quiz.options[0]
-            binding.quizOptionB.text = quiz.options[1]
-            binding.quizOptionC.text = quiz.options[2]
-            binding.quizOptionD.text = quiz.options[3]
+            binding.apply {
+                quizQuestion.text = "${quizViewModel.currentQuestionNumber}. ${quiz.question}"
+                quizOptionA.text = quiz.options[0]
+                quizOptionB.text = quiz.options[1]
+                quizOptionC.text = quiz.options[2]
+                quizOptionD.text = quiz.options[3]
+            }
         }
 
-        binding.quizOptionA.setOnClickListener(this)
-        binding.quizOptionB.setOnClickListener(this)
-        binding.quizOptionC.setOnClickListener(this)
-        binding.quizOptionD.setOnClickListener(this)
-
-        binding.quizNextBtn.setOnClickListener {
-            if (quizViewModel.currentQuestionNumber >= quizViewModel.totalQuestionToAnswer) {
-                Log.d("QuizFragment", "Quiz is finished")
-                val directions = QuizFragmentDirections.actionQuizFragmentToResultFragment()
-                findNavController().navigate(directions)
-            } else {
-                quizViewModel.loadNextQuestion()
-            }
-            resetOptions()
+        binding.apply {
+            quizOptionA.setOnClickListener(this@QuizFragment)
+            quizOptionB.setOnClickListener(this@QuizFragment)
+            quizOptionC.setOnClickListener(this@QuizFragment)
+            quizOptionD.setOnClickListener(this@QuizFragment)
+            quizNextBtn.setOnClickListener(this@QuizFragment)
         }
 
         quizViewModel.resetLiveData.observe(viewLifecycleOwner) {
@@ -85,10 +78,12 @@ class QuizFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setButtonState(enable: Boolean) {
-        binding.quizOptionA.isEnabled = enable
-        binding.quizOptionB.isEnabled = enable
-        binding.quizOptionC.isEnabled = enable
-        binding.quizOptionD.isEnabled = enable
+        binding.apply {
+            quizOptionA.isEnabled = enable
+            quizOptionB.isEnabled = enable
+            quizOptionC.isEnabled = enable
+            quizOptionD.isEnabled = enable
+        }
     }
 
     private fun highlightCorrectAnswer(correctAnswer: String) {
@@ -140,8 +135,15 @@ class QuizFragment : Fragment(), View.OnClickListener {
             binding.quizOptionD.id -> {
                 validateOptionsSelected(binding.quizOptionD, "d")
             }
+            binding.quizNextBtn.id -> {
+                if (quizViewModel.currentQuestionNumber >= quizViewModel.totalQuestionToAnswer) {
+                    val directions = QuizFragmentDirections.actionQuizFragmentToResultFragment()
+                    findNavController().navigate(directions)
+                } else {
+                    quizViewModel.loadNextQuestion()
+                }
+                resetOptions()
+            }
         }
     }
-
-
 }
