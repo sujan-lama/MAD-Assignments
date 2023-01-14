@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.miu.mdp.R
 import com.miu.mdp.databinding.FragmentSplashBinding
 import com.miu.mdp.ui.splash.state.SplashUIState
 import com.miu.mdp.ui.splash.viewmodel.SplashViewModel
@@ -38,6 +40,9 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.checkOnboardingDone()
+        val slideAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.anim_slide)
+        binding.logo.animation = slideAnimation
+
         lifecycleScope.launchWhenStarted {
             viewModel.splashUIState.collect { uiState ->
                 when (uiState) {
