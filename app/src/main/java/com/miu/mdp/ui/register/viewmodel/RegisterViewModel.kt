@@ -2,7 +2,7 @@ package com.miu.mdp.ui.register.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.miu.mdp.domain.model.UserDTO
+import com.miu.mdp.domain.model.User
 import com.miu.mdp.domain.repository.UserRepository
 import com.miu.mdp.ui.register.state.RegisterUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,8 +23,8 @@ class RegisterViewModel @Inject constructor(
     fun register(firstName: String, lastName: String, username: String, password: String) =
         viewModelScope.launch(Dispatchers.IO) {
             _registerUiState.value = RegisterUiState.Loading
-            val userDTO = UserDTO(firstName, lastName, username, password)
-            val success = userRepository.register(userDTO)
+            val user = User(firstName, lastName, username, password)
+            val success = userRepository.register(user)
             if (success) {
                 _registerUiState.value = RegisterUiState.Success
             } else {

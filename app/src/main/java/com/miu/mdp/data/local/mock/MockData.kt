@@ -2,9 +2,9 @@ package com.miu.mdp.data.local.mock
 
 import com.miu.mdp.data.local.entity.UserDetailEntity
 import com.miu.mdp.domain.model.Contact
-import com.miu.mdp.domain.model.UserDTO
+import com.miu.mdp.domain.model.User
 
-fun getUserDetailMock(user: UserDTO) = UserDetailEntity(
+fun getUserDetailMock(user: User) = UserDetailEntity(
     email = user.username,
     id = 0,
     image = "https://www.w3schools.com/howto/img_avatar.png",

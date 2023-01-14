@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.miu.mdp.databinding.FragmentAboutBinding
-import com.miu.mdp.domain.model.CertificationDTO
-import com.miu.mdp.domain.model.EducationDTO
+import com.miu.mdp.domain.model.Certification
+import com.miu.mdp.domain.model.Education
 import com.miu.mdp.ui.home.adapter.CertificationAdapter
 import com.miu.mdp.ui.home.adapter.EducationAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,7 +66,7 @@ class AboutFragment : Fragment(), EducationAdapter.OnItemClickListener,
             dialog.show(parentFragmentManager, AddCertificationDialog.TAG)
         }
 
-        viewModel.aboutDTO.observe(viewLifecycleOwner) {
+        viewModel.about.observe(viewLifecycleOwner) {
             if (it == null) return@observe
             binding.aboutMe.text = it.aboutMe
             educationAdapter.updateList(it.education)
@@ -79,20 +79,20 @@ class AboutFragment : Fragment(), EducationAdapter.OnItemClickListener,
         _binding = null
     }
 
-    override fun onDeleteClick(educationDTO: EducationDTO) {
-        viewModel.deleteEducation(educationDTO)
+    override fun onDeleteClick(education: Education) {
+        viewModel.deleteEducation(education)
     }
 
-    override fun onEditClick(educationDTO: EducationDTO) {
-        val dialog = AddEducationDialog.newInstance(email, educationDTO)
+    override fun onEditClick(education: Education) {
+        val dialog = AddEducationDialog.newInstance(email, education)
         dialog.show(parentFragmentManager, AddEducationDialog.TAG)
     }
 
-    override fun onCertificationDeleteClick(certification: CertificationDTO) {
+    override fun onCertificationDeleteClick(certification: Certification) {
         viewModel.deleteCertification(certification)
     }
 
-    override fun onCertificationEditClick(certification: CertificationDTO) {
+    override fun onCertificationEditClick(certification: Certification) {
         val dialog = AddCertificationDialog.newInstance(email, certification)
         dialog.show(parentFragmentManager, AddCertificationDialog.TAG)
     }

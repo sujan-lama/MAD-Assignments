@@ -11,6 +11,6 @@ interface HomeDAO {
 
     @Query("SELECT * FROM user WHERE username = :email")
     @Transaction
-    fun getHomeData(email: String): HomeData?
+    fun getHomeData(email: String): HomeDataRelation?
 
 }

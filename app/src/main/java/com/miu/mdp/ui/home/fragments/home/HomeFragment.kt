@@ -50,10 +50,10 @@ class HomeFragment : Fragment() {
         viewModel.getHomeData(email)
         viewModel.homeDataLiveData.observe(viewLifecycleOwner) {
             if (it == null) return@observe
-            val user = it.userDTO
+            val user = it.user
             binding.userName.text = "${user.firstName} ${user.lastName}"
             binding.email.text = user.username
-            val userDetail = it.userDetailDTO
+            val userDetail = it.userDetail
             binding.profileImage.setImageUrl(userDetail.image)
             binding.position.text = userDetail.position
             binding.careerNote.text = userDetail.careerNote

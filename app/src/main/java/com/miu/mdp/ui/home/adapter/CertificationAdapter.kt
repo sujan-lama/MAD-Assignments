@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.mdp.R
 import com.miu.mdp.databinding.ItemCertificationBinding
-import com.miu.mdp.domain.model.CertificationDTO
+import com.miu.mdp.domain.model.Certification
 import com.miu.mdp.utils.setImageUrl
 
 class CertificationAdapter(private val listener: OnCertificationActionListener) :
-    ListAdapter<CertificationDTO, CertificationAdapter.ViewHolder>(DiffCallback()) {
+    ListAdapter<Certification, CertificationAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemCertificationBinding
@@ -28,11 +28,11 @@ class CertificationAdapter(private val listener: OnCertificationActionListener) 
         holder.bind(getItem(position))
     }
 
-    fun updateList(list: List<CertificationDTO>) = submitList(list)
+    fun updateList(list: List<Certification>) = submitList(list)
 
     inner class ViewHolder(private val binding: ItemCertificationBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: CertificationDTO) {
+        fun bind(item: Certification) {
             binding.apply {
                 certificationName.text = item.certificationName
                 certificationImage.setImageUrl(item.image)
@@ -59,16 +59,16 @@ class CertificationAdapter(private val listener: OnCertificationActionListener) 
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<CertificationDTO>() {
-        override fun areItemsTheSame(oldItem: CertificationDTO, newItem: CertificationDTO) =
+    class DiffCallback : DiffUtil.ItemCallback<Certification>() {
+        override fun areItemsTheSame(oldItem: Certification, newItem: Certification) =
             oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: CertificationDTO, newItem: CertificationDTO) =
+        override fun areContentsTheSame(oldItem: Certification, newItem: Certification) =
             oldItem == newItem
     }
 
     interface OnCertificationActionListener {
-        fun onCertificationDeleteClick(certification: CertificationDTO)
-        fun onCertificationEditClick(certification: CertificationDTO)
+        fun onCertificationDeleteClick(certification: Certification)
+        fun onCertificationEditClick(certification: Certification)
     }
 }

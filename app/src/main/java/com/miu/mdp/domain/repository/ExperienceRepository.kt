@@ -1,9 +1,9 @@
 package com.miu.mdp.domain.repository
 
-import com.miu.mdp.domain.model.ExperienceDTO
+import com.miu.mdp.domain.model.Experience
 
 interface ExperienceRepository {
-    suspend fun getExperience(email: String): List<ExperienceDTO>
-    suspend fun addWorkExperience(experienceDTO: ExperienceDTO)
-    suspend fun deleteExperience(experienceDTO: ExperienceDTO)
+    suspend fun getExperience(email: String): List<Experience>
+    suspend fun addWorkExperience(experience: Experience)
+    suspend fun deleteExperience(experience: Experience)
 }

@@ -1,9 +1,9 @@
 package com.miu.mdp.data.mapper
 
 import com.miu.mdp.data.local.entity.ExperienceEntity
-import com.miu.mdp.domain.model.ExperienceDTO
+import com.miu.mdp.domain.model.Experience
 
-fun ExperienceEntity.toExperienceDTO() = ExperienceDTO(
+fun ExperienceEntity.toExperienceModel() = Experience(
     id = id,
     companyName = companyName,
     image = image,
@@ -14,7 +14,7 @@ fun ExperienceEntity.toExperienceDTO() = ExperienceDTO(
     description = description
 )
 
-fun ExperienceDTO.toExperienceEntity() = ExperienceEntity(
+fun Experience.toExperienceEntity() = ExperienceEntity(
     id = id,
     companyName = companyName,
     image = image,

@@ -1,10 +1,10 @@
 package com.miu.mdp.data.mapper
 
-import com.miu.mdp.data.local.entity.AboutData
-import com.miu.mdp.domain.model.AboutDTO
+import com.miu.mdp.data.local.entity.AboutDataRelation
+import com.miu.mdp.domain.model.About
 
-fun AboutData.toAboutDTO() = AboutDTO(
+fun AboutDataRelation.toAboutModel() = About(
     aboutMe = userDetail.aboutMe,
-    education = education.map { it.toEducationDTO() }.toList(),
-    certification = certification.map { it.toCertificationDTO() }.toList()
+    education = education.map { it.toEducationModel() }.toList(),
+    certification = certification.map { it.toCertificationModel() }.toList()
 )

@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.miu.mdp.domain.model.AboutDTO
-import com.miu.mdp.domain.model.CertificationDTO
-import com.miu.mdp.domain.model.EducationDTO
+import com.miu.mdp.domain.model.About
+import com.miu.mdp.domain.model.Certification
+import com.miu.mdp.domain.model.Education
 import com.miu.mdp.domain.repository.AboutRepository
 import com.miu.mdp.domain.repository.CertificationRepository
 import com.miu.mdp.domain.repository.EducationRepository
@@ -24,8 +24,8 @@ class AboutViewModel @Inject constructor(
     private val certificationRepository: CertificationRepository
 ) : ViewModel() {
 
-    private val _aboutDTO = MutableLiveData<AboutDTO>()
-    val aboutDTO: LiveData<AboutDTO> = _aboutDTO
+    private val _about = MutableLiveData<About>()
+    val about: LiveData<About> = _about
 
     private val _addEducationStateLiveData = SingleLiveData<AddEducationState>()
     val addEducationState: SingleLiveData<AddEducationState> = _addEducationStateLiveData
@@ -39,31 +39,31 @@ class AboutViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val aboutDataList = aboutRepository.getAboutData(email)
             aboutDataList?.let {
-                _aboutDTO.postValue(it)
+                _about.postValue(it)
             }
         }
     }
 
-    fun addEducation(educationDTO: EducationDTO) = viewModelScope.launch(Dispatchers.IO) {
+    fun addEducation(education: Education) = viewModelScope.launch(Dispatchers.IO) {
         _addEducationStateLiveData.postValue(AddEducationState.Loading)
         try {
             // simulate 1 second delay
             delay(1000)
-            educationRepository.insertEducation(educationDTO)
+            educationRepository.insertEducation(education)
             _addEducationStateLiveData.postValue(AddEducationState.Success)
         } catch (e: Exception) {
             _addEducationStateLiveData.postValue(AddEducationState.Error(e.message ?: "Error"))
         }
     }
 
-    fun addCertification(certificationDTO: CertificationDTO) =
+    fun addCertification(certification: Certification) =
         viewModelScope.launch(Dispatchers.IO) {
 
             _addCertificationStateLiveData.postValue(AddCertificationState.Loading)
             try {
                 // simulate 1 second delay
                 delay(1000)
-                certificationRepository.insertCertification(certificationDTO)
+                certificationRepository.insertCertification(certification)
                 _addCertificationStateLiveData.postValue(AddCertificationState.Success)
             } catch (e: Exception) {
                 _addCertificationStateLiveData.postValue(
@@ -74,17 +74,17 @@ class AboutViewModel @Inject constructor(
             }
         }
 
-    fun deleteEducation(educationDTO: EducationDTO) {
+    fun deleteEducation(education: Education) {
         viewModelScope.launch(Dispatchers.IO) {
-            educationRepository.deleteEducation(educationDTO)
-            getAboutData(educationDTO.email)
+            educationRepository.deleteEducation(education)
+            getAboutData(education.email)
         }
     }
 
-    fun deleteCertification(certificationDTO: CertificationDTO) {
+    fun deleteCertification(certification: Certification) {
         viewModelScope.launch(Dispatchers.IO) {
-            certificationRepository.deleteCertification(certificationDTO)
-            getAboutData(certificationDTO.email)
+            certificationRepository.deleteCertification(certification)
+            getAboutData(certification.email)
         }
     }
 }

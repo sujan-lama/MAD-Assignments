@@ -1,9 +1,9 @@
 package com.miu.mdp.data.mapper
 
-import com.miu.mdp.data.local.entity.HomeData
-import com.miu.mdp.domain.model.HomeDataDTO
+import com.miu.mdp.data.local.entity.HomeDataRelation
+import com.miu.mdp.domain.model.HomeData
 
-fun HomeData.toHomeDataDTO() = HomeDataDTO(
-    userDTO = user.toUserDTO(),
-    userDetailDTO = userDetail.toUserDetailDTO(),
+fun HomeDataRelation.toHomeDataModel() = HomeData(
+    user = user.toUserModel(),
+    userDetail = userDetail.toUserDetailModel()
 )

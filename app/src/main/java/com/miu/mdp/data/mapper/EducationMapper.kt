@@ -1,9 +1,9 @@
 package com.miu.mdp.data.mapper
 
 import com.miu.mdp.data.local.entity.EducationEntity
-import com.miu.mdp.domain.model.EducationDTO
+import com.miu.mdp.domain.model.Education
 
-fun EducationEntity.toEducationDTO() = EducationDTO(
+fun EducationEntity.toEducationModel() = Education(
     id = id,
     schoolName = schoolName,
     image = image,
@@ -13,7 +13,7 @@ fun EducationEntity.toEducationDTO() = EducationDTO(
     email = email
 )
 
-fun EducationDTO.toEducationEntity() = EducationEntity(
+fun Education.toEducationEntity() = EducationEntity(
     id = id,
     schoolName = schoolName,
     image = image,

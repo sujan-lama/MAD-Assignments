@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.miu.mdp.R
 import com.miu.mdp.databinding.ItemEducationBinding
-import com.miu.mdp.domain.model.EducationDTO
-import com.miu.mdp.domain.model.ExperienceDTO
+import com.miu.mdp.domain.model.Education
 import com.miu.mdp.utils.setImageUrl
 
-class EducationAdapter(private val listener:EducationAdapter.OnItemClickListener) : ListAdapter<EducationDTO, EducationAdapter.ViewHolder>(DiffCallback()) {
+class EducationAdapter(private val listener:EducationAdapter.OnItemClickListener) : ListAdapter<Education, EducationAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemEducationBinding
@@ -28,12 +27,12 @@ class EducationAdapter(private val listener:EducationAdapter.OnItemClickListener
         holder.bind(getItem(position))
     }
 
-    fun updateList(list: List<EducationDTO>) = submitList(list)
+    fun updateList(list: List<Education>) = submitList(list)
 
 
     inner class ViewHolder(private val binding: ItemEducationBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: EducationDTO) {
+        fun bind(item: Education) {
             binding.apply {
                 schoolName.text = item.schoolName
                 schoolDegree.text = item.degree
@@ -60,16 +59,16 @@ class EducationAdapter(private val listener:EducationAdapter.OnItemClickListener
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<EducationDTO>() {
-        override fun areItemsTheSame(oldItem: EducationDTO, newItem: EducationDTO) =
+    class DiffCallback : DiffUtil.ItemCallback<Education>() {
+        override fun areItemsTheSame(oldItem: Education, newItem: Education) =
             oldItem.schoolName == newItem.schoolName
 
-        override fun areContentsTheSame(oldItem: EducationDTO, newItem: EducationDTO) =
+        override fun areContentsTheSame(oldItem: Education, newItem: Education) =
             oldItem == newItem
     }
 
     interface OnItemClickListener {
-        fun onDeleteClick(educationDTO: EducationDTO)
-        fun onEditClick(educationDTO: EducationDTO)
+        fun onDeleteClick(education: Education)
+        fun onEditClick(education: Education)
     }
 }

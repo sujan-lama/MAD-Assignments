@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.miu.mdp.domain.model.HomeDataDTO
+import com.miu.mdp.domain.model.HomeData
 import com.miu.mdp.domain.repository.HomeRepository
 import com.miu.mdp.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,8 +18,8 @@ class HomeViewModel @Inject constructor(
     private val homeRepository: HomeRepository,
 ) : ViewModel() {
 
-    private var _homeDataLiveData = MutableLiveData<HomeDataDTO>()
-    val homeDataLiveData: LiveData<HomeDataDTO> = _homeDataLiveData
+    private var _homeDataLiveData = MutableLiveData<HomeData>()
+    val homeDataLiveData: LiveData<HomeData> = _homeDataLiveData
 
 
     fun getHomeData(email: String) = viewModelScope.launch(Dispatchers.IO) {

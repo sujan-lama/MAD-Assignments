@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class EducationDTO(
+data class Education(
     val id: Int,
     val schoolName: String,
     val image: String,

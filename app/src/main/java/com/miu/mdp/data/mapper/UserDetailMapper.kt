@@ -1,9 +1,9 @@
 package com.miu.mdp.data.mapper
 
 import com.miu.mdp.data.local.entity.UserDetailEntity
-import com.miu.mdp.domain.model.UserDetailDTO
+import com.miu.mdp.domain.model.UserDetail
 
-fun UserDetailEntity.toUserDetailDTO() = UserDetailDTO(
+fun UserDetailEntity.toUserDetailModel() = UserDetail(
     email = email,
     contact = contact,
     position = position,
@@ -13,7 +13,7 @@ fun UserDetailEntity.toUserDetailDTO() = UserDetailDTO(
     image = image
 )
 
-fun UserDetailDTO.toUserDetailEntity() = UserDetailEntity(
+fun UserDetail.toUserDetailEntity() = UserDetailEntity(
     id = 0,
     image = image,
     position = position,

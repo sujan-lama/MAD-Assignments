@@ -1,9 +1,9 @@
 package com.miu.mdp.domain.repository
 
-import com.miu.mdp.domain.model.CertificationDTO
+import com.miu.mdp.domain.model.Certification
 
 interface CertificationRepository {
-    suspend fun getCertification(email: String): List<CertificationDTO>
-    suspend fun insertCertification(certificationDTO: CertificationDTO)
-    suspend fun deleteCertification(certificationDTO: CertificationDTO)
+    suspend fun getCertification(email: String): List<Certification>
+    suspend fun insertCertification(certification: Certification)
+    suspend fun deleteCertification(certification: Certification)
 }

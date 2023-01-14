@@ -1,10 +1,11 @@
 package com.miu.mdp.data.local.entity
 
-import androidx.room.Embedded
+import androidx.room.ColumnInfo
 import androidx.room.Relation
 
-data class HomeData(
-    @Embedded val user: UserEntity,
+data class AboutDataRelation(
+    @ColumnInfo(name = "username")
+    val email: String,
     @Relation(
         parentColumn = "username",
         entityColumn = "email"
@@ -15,11 +16,6 @@ data class HomeData(
         entityColumn = "email"
     )
     val education: List<EducationEntity>,
-    @Relation(
-        parentColumn = "username",
-        entityColumn = "email"
-    )
-    val experience: List<ExperienceEntity>,
     @Relation(
         parentColumn = "username",
         entityColumn = "email"

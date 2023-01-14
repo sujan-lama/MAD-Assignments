@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CertificationDTO(
+data class Certification(
     val id: Int,
     val certificationName: String,
     val image: String,

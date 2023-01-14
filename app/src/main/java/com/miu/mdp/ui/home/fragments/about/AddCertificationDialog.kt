@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.DialogAddCertificationBinding
-import com.miu.mdp.domain.model.CertificationDTO
+import com.miu.mdp.domain.model.Certification
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,11 +19,11 @@ class AddCertificationDialog : DialogFragment() {
         const val TAG = "AddCertificationDialog"
         fun newInstance(
             email: String,
-            certificationDTO: CertificationDTO? = null
+            certification: Certification? = null
         ): AddCertificationDialog {
             val args = Bundle()
             args.putString("email", email)
-            args.putParcelable("certification", certificationDTO)
+            args.putParcelable("certification", certification)
             val fragment = AddCertificationDialog()
             fragment.arguments = args
             return fragment
@@ -59,8 +59,8 @@ class AddCertificationDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val certificationDTO = arguments?.getParcelable<CertificationDTO>("certification")
-        certificationDTO?.let {
+        val certification = arguments?.getParcelable<Certification>("certification")
+        certification?.let {
             binding.certificationNameEditText.setText(it.certificationName)
             binding.certImageUrlEditText.setText(it.image)
             binding.authorityEditText.setText(it.certificationAuthority)
@@ -109,8 +109,8 @@ class AddCertificationDialog : DialogFragment() {
                     .show()
                 return@setOnClickListener
             }
-            val certificationDTO = CertificationDTO(
-                id = certificationDTO?.id ?: 0,
+            val certification = Certification(
+                id = certification?.id ?: 0,
                 certificationName = certificationName,
                 certificationAuthority = authority,
                 certificationDate = expirationDate,
@@ -118,7 +118,7 @@ class AddCertificationDialog : DialogFragment() {
                 email = email
             )
 
-            viewModel.addCertification(certificationDTO)
+            viewModel.addCertification(certification)
         }
     }
 

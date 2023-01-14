@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.DialogAddWorkBinding
-import com.miu.mdp.domain.model.ExperienceDTO
+import com.miu.mdp.domain.model.Experience
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,10 +17,10 @@ class AddWorkDialog : DialogFragment() {
 
     companion object {
         const val TAG = "AddWorkDialog"
-        fun newInstance(email: String, experienceDTO: ExperienceDTO? = null): AddWorkDialog {
+        fun newInstance(email: String, experience: Experience? = null): AddWorkDialog {
             val args = Bundle()
             args.putString("email", email)
-            args.putParcelable("experience", experienceDTO)
+            args.putParcelable("experience", experience)
             val fragment = AddWorkDialog()
             fragment.arguments = args
             return fragment
@@ -56,8 +56,8 @@ class AddWorkDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val experienceDTO = arguments?.getParcelable<ExperienceDTO>("experience")
-        experienceDTO?.let {
+        val experience = arguments?.getParcelable<Experience>("experience")
+        experience?.let {
             binding.companyEditText.setText(it.companyName)
             binding.positionEditText.setText(it.position)
             binding.startDateEditText.setText(it.startDate)
@@ -110,8 +110,8 @@ class AddWorkDialog : DialogFragment() {
                     .show()
                 return@setOnClickListener
             }
-            val experienceDTO = ExperienceDTO(
-                id = experienceDTO?.id ?: 0,
+            val experience = Experience(
+                id = experience?.id ?: 0,
                 companyName = companyName,
                 position = position,
                 startDate = startDate,
@@ -121,7 +121,7 @@ class AddWorkDialog : DialogFragment() {
                 email = email
             )
 
-            viewModel.addWorkExperience(experienceDTO)
+            viewModel.addWorkExperience(experience)
         }
     }
 

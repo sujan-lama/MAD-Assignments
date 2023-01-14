@@ -11,6 +11,6 @@ interface AboutDAO {
 
     @Transaction
     @Query("SELECT username FROM user WHERE username = :email")
-    fun getAboutData(email: String): AboutData?
+    fun getAboutData(email: String): AboutDataRelation?
 
 }

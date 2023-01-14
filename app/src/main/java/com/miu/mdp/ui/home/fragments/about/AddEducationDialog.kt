@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.miu.mdp.R
 import com.miu.mdp.databinding.DialogAddEducationBinding
-import com.miu.mdp.domain.model.EducationDTO
+import com.miu.mdp.domain.model.Education
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -17,10 +17,10 @@ class AddEducationDialog : DialogFragment() {
 
     companion object {
         const val TAG = "AddEducationDialog"
-        fun newInstance(email: String, educationDTO: EducationDTO? = null): AddEducationDialog {
+        fun newInstance(email: String, education: Education? = null): AddEducationDialog {
             val args = Bundle()
             args.putString("email", email)
-            args.putParcelable("education", educationDTO)
+            args.putParcelable("education", education)
             val fragment = AddEducationDialog()
             fragment.arguments = args
             return fragment
@@ -56,7 +56,7 @@ class AddEducationDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val experienceDTO = arguments?.getParcelable<EducationDTO>("education")
+        val experienceDTO = arguments?.getParcelable<Education>("education")
         experienceDTO?.let {
             binding.schoolNameEditText.setText(it.schoolName)
             binding.degreeEditText.setText(it.degree)
@@ -108,7 +108,7 @@ class AddEducationDialog : DialogFragment() {
                     .show()
                 return@setOnClickListener
             }
-            val educationDTO = EducationDTO(
+            val education = Education(
                 id = experienceDTO?.id ?: 0,
                 schoolName = schoolName,
                 degree = degree,
@@ -118,7 +118,7 @@ class AddEducationDialog : DialogFragment() {
                 email = email
             )
 
-            viewModel.addEducation(educationDTO)
+            viewModel.addEducation(education)
         }
     }
 

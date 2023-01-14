@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ExperienceDTO(
+data class Experience(
     val id: Int,
     val companyName: String,
     val image: String,

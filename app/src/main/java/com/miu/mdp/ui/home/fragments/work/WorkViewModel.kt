@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.miu.mdp.domain.model.ExperienceDTO
+import com.miu.mdp.domain.model.Experience
 import com.miu.mdp.domain.repository.ExperienceRepository
 import com.miu.mdp.utils.SingleLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,8 +19,8 @@ class WorkViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _workExperienceLiveDataDTO =
-        MutableLiveData<List<ExperienceDTO>>(listOf())
-    val workExperienceLiveDataDTO: LiveData<List<ExperienceDTO>> = _workExperienceLiveDataDTO
+        MutableLiveData<List<Experience>>(listOf())
+    val workExperienceLiveDataDTO: LiveData<List<Experience>> = _workExperienceLiveDataDTO
 
     private val _addWorkStateLiveData = SingleLiveData<AddWorkState>()
     val addWorkState: SingleLiveData<AddWorkState> = _addWorkStateLiveData
@@ -32,21 +32,21 @@ class WorkViewModel @Inject constructor(
         }
     }
 
-    fun addWorkExperience(experienceDTO: ExperienceDTO) = viewModelScope.launch(Dispatchers.IO) {
+    fun addWorkExperience(experience: Experience) = viewModelScope.launch(Dispatchers.IO) {
         _addWorkStateLiveData.postValue(AddWorkState.Loading)
         try {
             // simulate 1 second delay
             delay(1000)
-            experienceRepository.addWorkExperience(experienceDTO)
+            experienceRepository.addWorkExperience(experience)
             _addWorkStateLiveData.postValue(AddWorkState.Success)
         } catch (e: Exception) {
             _addWorkStateLiveData.postValue(AddWorkState.Error(e.message ?: "Error"))
         }
     }
 
-    fun removeWorkExperience(experienceDTO: ExperienceDTO) = viewModelScope.launch(Dispatchers.IO) {
-        experienceRepository.deleteExperience(experienceDTO)
-        getWorkExperience(email = experienceDTO.email)
+    fun removeWorkExperience(experience: Experience) = viewModelScope.launch(Dispatchers.IO) {
+        experienceRepository.deleteExperience(experience)
+        getWorkExperience(email = experience.email)
     }
 
 }

@@ -10,7 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.miu.mdp.R
 import com.miu.mdp.databinding.FragmentWorkBinding
-import com.miu.mdp.domain.model.ExperienceDTO
+import com.miu.mdp.domain.model.Experience
 import com.miu.mdp.ui.home.adapter.WorkAdapter
 import com.miu.mdp.ui.home.adapter.decorator.DividerItemDecorator
 import dagger.hilt.android.AndroidEntryPoint
@@ -78,12 +78,12 @@ class WorkFragment : Fragment(), WorkAdapter.OnItemClickListener {
         _binding = null
     }
 
-    override fun onDeleteClick(experienceDTO: ExperienceDTO) {
-        workViewModel.removeWorkExperience(experienceDTO)
+    override fun onDeleteClick(experience: Experience) {
+        workViewModel.removeWorkExperience(experience)
     }
 
-    override fun onEditClick(experienceDTO: ExperienceDTO) {
-        val dialog = AddWorkDialog.newInstance(email, experienceDTO)
+    override fun onEditClick(experience: Experience) {
+        val dialog = AddWorkDialog.newInstance(email, experience)
         dialog.show(childFragmentManager, AddWorkDialog.TAG)
     }
 }
