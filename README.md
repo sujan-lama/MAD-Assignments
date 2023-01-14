@@ -16,3 +16,5 @@ Quiz Assignment : https://github.com/sujan-lama/MDP-Assignments/tree/quiz-input-
 Walmart Electronics page recyclerview: https://github.com/sujan-lama/MDP-Assignments/tree/walmart-electronics-page
 
 CV builder project : https://github.com/sujan-lama/MDP-Assignments/tree/cv-builder-project
+
+Quiz App project: https://github.com/sujan-lama/MDP-Assignments/tree/quiz-app
