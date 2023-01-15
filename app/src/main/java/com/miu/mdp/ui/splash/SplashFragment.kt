@@ -50,7 +50,7 @@ class SplashFragment : Fragment() {
                         // wait 2 seconds
                         delay(2000)
                         val directions =
-                            SplashFragmentDirections.actionSplashFragmentToQuizFragment()
+                            SplashFragmentDirections.actionSplashFragmentToHomeFragment()
                         findNavController().navigate(directions)
                     }
 

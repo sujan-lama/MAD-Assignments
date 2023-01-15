@@ -24,7 +24,7 @@ object AppModule {
             AppDatabase::class.java,
             AppDatabase.DATABASE_NAME
         )
-            .createFromAsset("database/quiz.db")
+//            .createFromAsset("database/quiz.db")
         builder.setQueryCallback(object : RoomDatabase.QueryCallback {
             override fun onQuery(sqlQuery: String, bindArgs: List<Any?>) {
                 println("SQL Query: $sqlQuery SQL Args: $bindArgs")

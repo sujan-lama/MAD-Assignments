@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -14,7 +15,6 @@ import com.miu.mdp.R
 import com.miu.mdp.databinding.ActivityMainBinding
 import com.miu.mdp.ui.quiz.QuizViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
                     supportActionBar?.hide()
                     binding.toolbar.title = "QUIZ APP"
                 }
+                R.id.homeFragment -> {
+                    supportActionBar?.show()
+                    binding.toolbar.title = "Home"
+                }
+
                 R.id.quizFragment -> {
                     //show menu
                     supportActionBar?.show()
@@ -59,16 +64,16 @@ class MainActivity : AppCompatActivity() {
                     binding.toolbar.title = ""
                 }
             }
-            supportActionBar?.setDisplayHomeAsUpEnabled(destination.id == R.id.resultAnalysisFragment)
+            supportActionBar?.setDisplayHomeAsUpEnabled(destination.id == R.id.quizFragment || destination.id == R.id.resultAnalysisFragment)
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         menu?.findItem(R.id.action_restart)?.isVisible =
-            quizViewModel.currentQuestionNumber < quizViewModel.totalQuestionToAnswer
+            navController.currentDestination?.id == R.id.quizFragment
         menu?.findItem(R.id.action_onboarding)?.isVisible =
-            quizViewModel.currentQuestionNumber < quizViewModel.totalQuestionToAnswer
+            navController.currentDestination?.id == R.id.homeFragment
         return true
     }
 
@@ -81,7 +86,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.action_onboarding -> {
-                quizViewModel.resetQuiz()
                 navController.navigate(R.id.action_global_onboardingFragment)
             }
         }
@@ -89,6 +93,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        if (navController.currentDestination?.id == R.id.quizFragment) {
+            quizViewModel.resetQuiz()
+        }
         return findNavController(R.id.nav_host_fragment).navigateUp() || super.onSupportNavigateUp()
     }
 

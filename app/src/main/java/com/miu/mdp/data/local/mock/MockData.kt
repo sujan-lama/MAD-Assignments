@@ -58,9 +58,9 @@ fun defaultQuizQuestions() = listOf<QuizEntity>(
     ),
     QuizEntity(
         id = 8,
-        question = "Which of the following is not a type of Service?",
-        options = listOf("Started Service", "Bound Service", "None of the above", "Both a and b"),
-        answer = "c",
+        question = "What phrase means that the compiler validates types while compiling?",
+        options = listOf("Type Safety", "Data Binding", "Type Validation", "Wrong Text"),
+        answer = "a",
     ),
     QuizEntity(
         id = 9,
@@ -75,15 +75,15 @@ fun defaultQuizQuestions() = listOf<QuizEntity>(
     ),
     QuizEntity(
         id = 10,
-        question = "Which of the following is not a type of Content Provider?",
-        options = listOf("Single Process", "Multi Process", "None of the above", "Both a and b"),
-        answer = "c",
+        question = "A ___ represents, by default the items in a row or column when using a GridLayout.",
+        options = listOf("grid", "layout", "list", "span"),
+        answer = "d",
     ),
     QuizEntity(
         id = 11,
-        question = "hich of the following is not an activity lifecycle callback method?",
-        options = listOf("onCreate()", "onStart()", "onResume()", "onBack()"),
-        answer = "d",
+        question = "To keep the UI running smoothly, use ___ for long running tasks, such as all database operations.",
+        options = listOf("Coroutines", "ViewModels", "Returns", "Managed Threads"),
+        answer = "a",
     ),
     QuizEntity(
         id = 12,

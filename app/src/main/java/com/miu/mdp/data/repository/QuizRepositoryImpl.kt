@@ -1,5 +1,7 @@
 package com.miu.mdp.data.repository
+
 import com.miu.mdp.data.local.dao.QuizDAO
+import com.miu.mdp.data.local.mock.defaultQuizQuestions
 import com.miu.mdp.data.mapper.toEntity
 import com.miu.mdp.data.mapper.toQuiz
 import com.miu.mdp.domain.model.Quiz
@@ -14,6 +16,9 @@ class QuizRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getQuizList(): List<Quiz> {
+        if (quizDAO.getQuizList().isEmpty()) {
+            quizDAO.insert(defaultQuizQuestions())
+        }
         return quizDAO.getQuizList().map { it.toQuiz() }
     }
 

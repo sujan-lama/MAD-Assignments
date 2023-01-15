@@ -68,7 +68,7 @@ class OnboardingFragment : Fragment() {
         // go to next page
         viewModel.saveOnboardingDone(true)
         val directions =
-            OnboardingFragmentDirections.actionOnboardingFragmentToQuizFragment()
+            OnboardingFragmentDirections.actionOnboardingFragmentToHomeFragment()
         findNavController().navigate(directions)
     }
 

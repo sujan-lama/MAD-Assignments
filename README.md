@@ -21,6 +21,11 @@ Onboarding Screen:
   <img src="/screenshots/4.png" width="250" />
 </p>
 
+Home Screen:
+<p float="left">
+  <img src="/screenshots/12.png" width="250" />
+</p>
+
 Quiz Screen:
 <p float="left">
   <img src="/screenshots/5.png" width="250" />
